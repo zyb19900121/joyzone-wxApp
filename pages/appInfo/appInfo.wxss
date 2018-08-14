@@ -1,0 +1,22 @@
+.app-info{
+  height: 100%;
+  background: #fafafa;
+  padding: 20rpx;
+  font-size: 26rpx;
+  box-sizing: border-box;
+}
+.info-item{
+  /* border: 1px solid #dcdcdc; */
+  background: #ffffff;
+  padding: 15rpx 40rpx;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px #dcdcdc;
+  margin-bottom: 10px;
+}
+.item-name{
+  color: #303133;
+  margin-right: 10rpx;
+}
+.item-content{
+  color: #909399;
+}

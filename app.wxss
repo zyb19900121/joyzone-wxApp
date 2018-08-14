@@ -1,0 +1,26 @@
+/**app.wxss**/
+page {
+  display: block;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+/**
+蓝色背景 #409EFF
+主要字体 #303133
+次要字体 #909399
+选中颜色 #d81e06
+边框颜色 #dcdcdc
+字体大小 22rpx
+justify-content 主轴方向
+align-items 纵轴方向
+flex: flex-grow、flex-shrink、flex-basis 默认值：0 1 auto
+flex-grow
+该属性来设置，当父元素的宽度大于所有子元素的宽度的和时（即父元素会有剩余空间），子元素如何分配父元素的剩余空间。
+flex-shrink
+该属性来设置，当父元素的宽度小于所有子元素的宽度的和时（即子元素会超出父元素），子元素如何缩小自己的宽度的。
+flex-basis
+该属性来设置该元素的宽度。当然，width也可以用来设置元素宽度。如果元素上同时设置了width和flex-basis,那么flex-basis会覆盖width的值。
+
+**/

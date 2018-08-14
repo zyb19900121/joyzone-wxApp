@@ -1,0 +1,36 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/gameDetail/gameDetail",
+    "pages/appInfo/appInfo",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundColor":"#fafafa",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#409EFF",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color": "#303133",
+    "selectedColor": "#d81e06",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "selectedIconPath": "images/icon/index_active.png",
+        "iconPath": "images/icon/index.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/icon/about_active.png",
+        "iconPath": "images/icon/about.png",
+        "pagePath": "pages/appInfo/appInfo",
+        "text": "关于"
+      }
+    ]
+  }
+  
+}

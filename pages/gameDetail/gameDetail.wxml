@@ -1,0 +1,26 @@
+<view class='game-detail'>
+  <view class='detail-container'>
+    <view class='filter-bg'></view>
+    <image class='blur-bg' src="{{baseUrl}}{{gameDetail.game_cover}}"></image>
+    <view class='detail-content'>
+      <view class='image-container'>
+        <image mode="aspectFit" src="{{baseUrl}}{{gameDetail.game_cover}}"></image>
+      </view>
+      <view class='info-container'>
+        <view class='info-item'>
+          <text class='game-name'>{{gameDetail.game_name}}</text>
+        </view>
+        <view class='info-item'>
+          <text class='game-type' wx:for="{{gameTypeList}}">{{item}}</text>
+        </view>
+
+
+
+      </view>
+
+    </view>
+  </view>
+  <view class='tabs-container'>
+    <component-tabs></component-tabs>
+  </view>
+</view>

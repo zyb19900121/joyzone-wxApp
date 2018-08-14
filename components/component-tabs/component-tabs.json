@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "component-modal": "/components/component-modal/component-modal"
+  }
+}
