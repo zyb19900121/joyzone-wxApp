@@ -25,7 +25,6 @@
   flex-direction: row;
   height: 100rpx;
   line-height: 100rpx;
-  border-top: 2rpx solid #dcdcdc;
 }
 
 .cancel-btn, .confirm-btn {
@@ -37,12 +36,14 @@
 }
 
 .cancel-btn {
-  color:#909399;
-  border-right: 2rpx solid #dcdcdc;
+  background: #dcdcdc;
+  border-bottom-left-radius: 10rpx;
 }
 
-.confirm-btn{
-  color:#409EFF;
+.confirm-btn {
+  background: #409eff;
+  color: #fff;
+  border-bottom-right-radius: 10rpx;
 }
 
 .main-content {

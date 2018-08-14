@@ -9,7 +9,7 @@
   /* border: 1px solid #dcdcdc; */
   background: #ffffff;
   padding: 15rpx 40rpx;
-  border-radius: 2px;
+  border-radius: 10rpx;
   box-shadow: 2px 2px 5px #dcdcdc;
   margin-bottom: 10px;
 }

@@ -15,7 +15,8 @@ Component({
     userInfo: {},
     hasUserInfo: false,
     currentTab: 0,
-    showModal:false
+    showModal: false,
+    commentContent: ''
     // tabList: ['资讯', '攻略', '图集', '评论'] 暂时没用，等组件支持复用的时候再完善
   },
 
@@ -36,6 +37,9 @@ Component({
       })
     },
     submitComment: function(e) {
+
+    },
+    showCommentModal(e) {
       if (e.detail.userInfo) {
         app.globalData.userInfo = e.detail.userInfo
         this.setData({
@@ -46,11 +50,17 @@ Component({
       } else {
         console.log('拒绝授权')
       }
-    },
-    showCommentModal(){
       this.setData({
         showModal: true
       })
+    },
+    bindCommentInput(e) {
+      this.setData({
+        commentContent: e.detail.value
+      })
+    },
+    modalConfirm(e) {
+      console.log('评论内容', this.data.commentContent)
     }
   }
 })

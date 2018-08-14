@@ -19,12 +19,15 @@
       <view class='comment-list'>评论 (Coming soon)</view>
     </swiper-item>
   </swiper>
-  <view class='comment-input' wx:if="{{currentTab==3}}" bindtap='showCommentModal'>
-    <text>发表评论</text>
+  <view class='comment-input' wx:if="{{currentTab==3}}">
+    <!-- <text>发表评论</text> -->
     <!-- <textarea placeholder="请输入评论内容" cursor-spacing="20" /> -->
-    <!-- <button type='text' open-type="getUserInfo" bindgetuserinfo="showCommentModal">提 交</button> -->
+    <button class='show-modal-btn' type='text' open-type="getUserInfo" bindgetuserinfo="showCommentModal">发表评论</button>
   </view>
-  <component-modal show="{{showModal}}" height='60%' bindcancel="modalCancel" bindconfirm='modalConfirm'>
-    <view class='modal-content'>你自己的布局</view>
+  <component-modal show="{{showModal}}" height='35%' bindcancel="modalCancel" bindconfirm='modalConfirm'>
+    <view class='modal-content'>
+      <text class='modal-title'>发表评论</text>
+      <textarea bindinput='bindCommentContent' class='model-textarea' placeholder="请输入评论内容" cursor-spacing='165'></textarea>
+    </view>
   </component-modal>
 </view>
