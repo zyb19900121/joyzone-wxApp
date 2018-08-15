@@ -72,8 +72,8 @@
   color: #409eff;
   width: 100%;
   background: none;
-  height: 75rpx;
-  line-height: 75rpx;
+  height: 80rpx;
+  line-height: 80rpx;
 }
 
 .show-modal-btn::after {

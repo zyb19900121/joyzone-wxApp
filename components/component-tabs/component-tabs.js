@@ -5,7 +5,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    gameId: {
+      type: Number,
+      value: null
+    }
   },
 
   /**
@@ -60,7 +63,41 @@ Component({
       })
     },
     modalConfirm(e) {
-      console.log('评论内容', this.data.commentContent)
+      if (this.data.hasUserInfo) {
+        let commentData = {
+          username: this.data.userInfo.nickName,
+          user_avatar: this.data.userInfo.avatarUrl,
+          comment_content: this.data.commentContent,
+          game_id: this.data.gameId
+        }
+        this.saveComment(commentData);
+      } else {
+        let commentData = {
+          username: '匿名',
+          user_avatar: '/public/system/default_avatar.jpg',
+          comment_content: this.data.commentContent,
+          game_id: this.data.gameId
+        }
+        this.saveComment(commentData);
+      }
+    },
+    //发表评论
+    saveComment(data) {
+      app.userService.saveComment(data)
+        .then(res => {
+          console.log(res)
+          wx.showToast({
+            title: '发布成功',
+            icon: 'success',
+            duration: 2000
+          })
+          // wx.stopPullDownRefresh()
+        })
+        .catch(res => {
+          // wx.stopPullDownRefresh()
+          app.requestErrorHandle()
+        })
+
     }
   }
 })

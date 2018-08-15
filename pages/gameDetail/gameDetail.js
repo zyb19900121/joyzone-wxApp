@@ -6,6 +6,7 @@ Page({
    */
   data: {
     baseUrl: app.globalData.baseUrl,
+    gameId: '',
     gameDetail: '',
     gameTypeList: []
   },
@@ -36,7 +37,7 @@ Page({
   onLoad: function(options) {
     console.log('options', options)
     this.setData({
-
+      gameId: options.gameId
     })
 
     this.getGameDetail(options.gameId);
