@@ -55,6 +55,14 @@ class UserService {
   }
 
   /**
+  * 发表评论
+  */
+  getCommentList(data) {
+    return this._request.getRequest(this._baseUrl + '/api/gameComment', data, this._defaultHeader)
+      .then(res => res.data)
+  }
+
+  /**
    * 获取app信息
    */
   getAppInfo() {

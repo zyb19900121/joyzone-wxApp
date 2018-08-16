@@ -1,1 +1,11 @@
-/* components/component-list/component-list.wxss */
+.component-list{
+  height: 100%;
+}
+.scroll-list{
+  height: 100%;
+}
+
+.comment-item{
+  padding: 40rpx;
+  border-bottom: 1px solid gainsboro;
+}

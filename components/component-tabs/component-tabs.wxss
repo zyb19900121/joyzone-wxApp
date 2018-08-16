@@ -43,7 +43,11 @@
   display: flex;
   flex-flow: column;
   justify-content: start;
-  background: gainsboro;
+}
+
+.component-list{
+  height: 100%;
+  width: 100%;
 }
 
 .comment-list {

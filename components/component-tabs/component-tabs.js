@@ -15,12 +15,34 @@ Component({
    * 组件的初始数据
    */
   data: {
-    userInfo: {},
-    hasUserInfo: false,
-    currentTab: 0,
-    showModal: false,
+    userInfo: {}, //用户信息
+    hasUserInfo: false, //是否有用户信息
+    currentTab: 0, //当前tab页
+    showModal: false, //发表评论弹窗
+    commentParams: {
+      gameId: '',
+      pageSize: 15,
+      currentPage: 1
+    },
+    commentList: [],
+    commentTotal: '',
     commentContent: ''
     // tabList: ['资讯', '攻略', '图集', '评论'] 暂时没用，等组件支持复用的时候再完善
+
+  },
+
+  /**
+   * 组件的生命周期
+   */
+
+  // created: function() {}, // 组件在内存中创建完毕执行
+  // attached: function() {}, // 组件挂载之前执行
+  // ready: function() {}, // 组件挂载后执行
+  // detached: function() {}, // 组件移除执行
+  // moved: function() {}, // 组件移动的时候执行
+
+  ready() {
+    this.getCommentList(this.data.commentParams);
   },
 
   /**
@@ -80,6 +102,23 @@ Component({
         }
         this.saveComment(commentData);
       }
+    },
+    getCommentList(commentParams) {
+      commentParams.gameId = this.data.gameId
+      app.userService.getCommentList(commentParams)
+        .then(res => {
+          console.log(res)
+          this.setData({
+            commentList: res.list,
+            commentTotal: res.total
+          })
+          // wx.stopPullDownRefresh()
+        })
+        .catch(res => {
+          // wx.stopPullDownRefresh()
+          app.requestErrorHandle()
+        })
+
     },
     //发表评论
     saveComment(data) {

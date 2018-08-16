@@ -16,7 +16,8 @@
       <view>图集 (Coming soon)</view>
     </swiper-item>
     <swiper-item class="swiper-item swiper-comment">
-      <view class='comment-list'>评论 (Coming soon)</view>
+      <!-- <view class='comment-list'>评论 (Coming soon)</view> -->
+      <component-list class="component-list" listData="{{commentList}}"></component-list>
     </swiper-item>
   </swiper>
   <view class='comment-input' wx:if="{{currentTab==3}}">
