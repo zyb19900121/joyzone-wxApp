@@ -52,6 +52,7 @@ class UserService {
   saveComment(data) {
     return this._request.postRequest(this._baseUrl + '/api/gameComment', data, this._defaultHeader)
       .then(res => res.data)
+
   }
 
   /**

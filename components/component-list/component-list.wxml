@@ -1,9 +1,0 @@
-<view class="component-list">
-  <scroll-view class='scroll-list' upper-threshold="{{upperTthreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="scrollToUpper" bindscrolltolower="scrollToLower">
-    <view class='comment-item' wx:for="{{listData}}">
-      <view>{{item.username}}</view>
-      <view>{{item.comment_content}}</view>
-      <view>{{item.create_date}}</view>
-    </view>
-  </scroll-view>
-</view>

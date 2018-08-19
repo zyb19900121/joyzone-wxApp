@@ -49,16 +49,10 @@ Component({
     },
 
     cancel() {
-      this.setData({
-        show: false
-      })
       this.triggerEvent('cancel')
     },
 
     confirm() {
-      this.setData({
-        show: false
-      })
       this.triggerEvent('confirm')
     }
   }

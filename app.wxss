@@ -13,6 +13,7 @@ page {
 次要字体 #909399
 选中颜色 #d81e06
 边框颜色 #dcdcdc
+列表边框 ##f1f1f1
 字体大小 22rpx
 border-radius: 10rpx;
 justify-content 主轴方向

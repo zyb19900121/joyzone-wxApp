@@ -19,13 +19,6 @@ Component({
     hasUserInfo: false, //是否有用户信息
     currentTab: 0, //当前tab页
     showModal: false, //发表评论弹窗
-    commentParams: {
-      gameId: '',
-      pageSize: 15,
-      currentPage: 1
-    },
-    commentList: [],
-    commentTotal: '',
     commentContent: ''
     // tabList: ['资讯', '攻略', '图集', '评论'] 暂时没用，等组件支持复用的时候再完善
 
@@ -40,10 +33,6 @@ Component({
   // ready: function() {}, // 组件挂载后执行
   // detached: function() {}, // 组件移除执行
   // moved: function() {}, // 组件移动的时候执行
-
-  ready() {
-    this.getCommentList(this.data.commentParams);
-  },
 
   /**
    * 组件的方法列表
@@ -60,9 +49,6 @@ Component({
       this.setData({
         currentTab: event.detail.current
       })
-    },
-    submitComment: function(e) {
-
     },
     showCommentModal(e) {
       if (e.detail.userInfo) {
@@ -84,7 +70,19 @@ Component({
         commentContent: e.detail.value
       })
     },
+    modalCancel() {
+      this.setData({
+        showModal: false
+      })
+    },
     modalConfirm(e) {
+      if (!this.data.commentContent) {
+        wx.showToast({
+          title: '请填写评论内容',
+          icon: 'none'
+        })
+        return false;
+      }
       if (this.data.hasUserInfo) {
         let commentData = {
           username: this.data.userInfo.nickName,
@@ -102,24 +100,13 @@ Component({
         }
         this.saveComment(commentData);
       }
-    },
-    getCommentList(commentParams) {
-      commentParams.gameId = this.data.gameId
-      app.userService.getCommentList(commentParams)
-        .then(res => {
-          console.log(res)
-          this.setData({
-            commentList: res.list,
-            commentTotal: res.total
-          })
-          // wx.stopPullDownRefresh()
-        })
-        .catch(res => {
-          // wx.stopPullDownRefresh()
-          app.requestErrorHandle()
-        })
 
+      this.setData({
+        commentContent: '',
+        showModal: false
+      })
     },
+
     //发表评论
     saveComment(data) {
       app.userService.saveComment(data)
@@ -130,13 +117,20 @@ Component({
             icon: 'success',
             duration: 2000
           })
+
+          let commentParams = {
+            gameId: this.data.gameId,
+            pageSize: 10,
+            currentPage: 1
+          }
+
+          this.selectComponent("#componentComment").getCommentList(commentParams);
           // wx.stopPullDownRefresh()
         })
         .catch(res => {
           // wx.stopPullDownRefresh()
           app.requestErrorHandle()
         })
-
     }
   }
 })

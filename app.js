@@ -40,10 +40,11 @@ App({
   globalData: {
     userInfo: null,
     baseUrl,
+    gameId:''
   },
   requestErrorHandle() {
     wx.showToast({
-      title: '获取接口数据失败！',
+      title: '服务器错误，请与开发人员联系',
       icon: 'none'
     })
   },

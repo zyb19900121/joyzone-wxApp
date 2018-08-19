@@ -45,7 +45,7 @@
   justify-content: start;
 }
 
-.component-list{
+.component-comment{
   height: 100%;
   width: 100%;
 }

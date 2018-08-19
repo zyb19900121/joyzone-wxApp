@@ -53,6 +53,7 @@ Page({
       })
   },
   goGameDetail(event) {
+    app.globalData.gameId = event.currentTarget.dataset.gameid;
     let gameId = event.currentTarget.dataset.gameid
     let gameName = event.currentTarget.dataset.gamename
     wx.navigateTo({

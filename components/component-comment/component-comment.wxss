@@ -1,0 +1,41 @@
+.component-list {
+  height: 100%;
+}
+
+.scroll-list {
+  height: 100%;
+}
+
+.comment-list-container{
+  height: calc(100% + 5rpx);
+}
+
+.comment-item {
+  padding: 20rpx 20rpx 25rpx 20rpx;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  flex-flow: row;
+}
+
+.user-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 10rpx;
+}
+
+.info-container {
+  margin-left: 20rpx;
+}
+
+.username {
+  font-size: 26rpx;
+}
+
+.create-date {
+  font-size: 22rpx;
+  color: #909399;
+}
+
+.content{
+  margin-top: 10rpx;
+}

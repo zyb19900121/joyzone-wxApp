@@ -2,6 +2,6 @@
   "component": true,
   "usingComponents": {
     "component-modal": "/components/component-modal/component-modal",
-    "component-list": "/components/component-list/component-list"
+    "component-comment": "/components/component-comment/component-comment"
   }
 }

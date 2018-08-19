@@ -17,7 +17,7 @@
     </swiper-item>
     <swiper-item class="swiper-item swiper-comment">
       <!-- <view class='comment-list'>评论 (Coming soon)</view> -->
-      <component-list class="component-list" listData="{{commentList}}"></component-list>
+      <component-comment id="componentComment" class="component-comment" gameId="{{gameId}}"></component-comment>
     </swiper-item>
   </swiper>
   <view class='comment-input' wx:if="{{currentTab==3}}">
@@ -28,7 +28,7 @@
   <component-modal show="{{showModal}}" height='35%' bindcancel="modalCancel" bindconfirm='modalConfirm'>
     <view class='modal-content'>
       <text class='modal-title'>发布评论</text>
-      <textarea bindinput='bindCommentInput' class='model-textarea' placeholder="请输入评论内容" cursor-spacing='165'></textarea>
+      <textarea value="{{commentContent}}" bindinput='bindCommentInput' class='model-textarea' placeholder="请输入评论内容" cursor-spacing='165'></textarea>
     </view>
   </component-modal>
 </view>

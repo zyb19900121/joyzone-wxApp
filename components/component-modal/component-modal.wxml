@@ -4,8 +4,8 @@
       <slot></slot>
     </scroll-view>
     <view class='modal-btn-wrapper'>
-      <view class='cancel-btn' bindtap='cancel'>取 消</view>
-      <view class='confirm-btn' bindtap='confirm'>确 定</view>
+      <view class='cancel-btn' catchtap='cancel'>取 消</view>
+      <view class='confirm-btn' catchtap='confirm'>确 定</view>
     </view>
   </view>
 </view>
