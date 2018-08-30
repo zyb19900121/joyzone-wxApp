@@ -31,8 +31,7 @@ class UserService {
   /**
    * 获取所有游戏列表
    */
-  getGameList() {
-    let data = ''
+  getGameList(data) {
     return this._request.getRequest(this._baseUrl + '/api/game', data, this._defaultHeader)
       .then(res => res.data)
   }

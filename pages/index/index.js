@@ -38,7 +38,10 @@ Page({
   },
   //查询游戏列表
   getGameList() {
-    app.userService.getGameList()
+    let gameParams = {
+      isSold: 1
+    }
+    app.userService.getGameList(gameParams)
       .then(res => {
         console.log(res)
         // wx.stopPullDownRefresh()
