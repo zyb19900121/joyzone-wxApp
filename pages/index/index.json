@@ -1,4 +1,4 @@
 {
-  "navigationBarTitleText": "首页",
-  "disableScroll": true
+  "navigationBarTitleText": "游戏库",
+  "enablePullDownRefresh": true
 }

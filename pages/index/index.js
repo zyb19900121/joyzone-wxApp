@@ -3,6 +3,14 @@ Page({
   data: {
     baseUrl: app.globalData.baseUrl,
     gameList: [],
+    gameTotal: '',
+    searchParams: {
+      pageSize: 18,
+      currentPage: 1,
+      platform: '',
+      gameType: ''
+    },
+    scrollAction: ''
   },
   onLoad: function() {
     // wx.startPullDownRefresh()
@@ -38,20 +46,29 @@ Page({
   },
   //查询游戏列表
   getGameList() {
-    let gameParams = {
-      isSold: 1
-    }
-    app.userService.getGameList(gameParams)
+    wx.showNavigationBarLoading();
+    app.userService.getGameList(this.data.searchParams)
       .then(res => {
         console.log(res)
-        // wx.stopPullDownRefresh()
-        let list = res
-        this.setData({
-          gameList: list
-        })
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh()
+
+        if (this.data.scrollAction == 'refresh') {
+          this.setData({
+            gameList: res.list,
+            gameTotal: res.total,
+            scrollAction: ''
+          })
+        } else {
+          this.setData({
+            gameList: [...this.data.gameList, ...res.list],
+            gameTotal: res.total
+          })
+        }
       })
       .catch(res => {
-        // wx.stopPullDownRefresh()
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh()
         app.requestErrorHandle()
       })
   },
@@ -62,10 +79,35 @@ Page({
     wx.navigateTo({
       url: `../gameDetail/gameDetail?gameId=${gameId}`
     })
+  },
+  // 下拉刷新
+  onPullDownRefresh() {
+    console.log("下拉刷新");
+    this.setData({
+      searchParams: {
+        pageSize: 18,
+        currentPage: 1,
+        platform: '',
+        gameType: ''
+      },
+      scrollAction: 'refresh'
+    })
+    this.getGameList();
+  },
+  onReachBottom() {
+    if (this.data.gameList.length == this.data.gameTotal) {
+      wx.showToast({
+        title: '没有更多了',
+        icon: 'none'
+      })
+      return false;
+    }
+    this.setData({
+      searchParams: {
+        pageSize: this.data.searchParams.pageSize,
+        currentPage: this.data.searchParams.currentPage + 1
+      }
+    })
+    this.getGameList(this.data.searchParams);
   }
-  //下拉刷新
-  // onPullDownRefresh() {
-  //   console.log("下拉刷新");
-  //   this.getdataList();
-  // },
 })

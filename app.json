@@ -22,7 +22,19 @@
         "selectedIconPath": "images/icon/index_active.png",
         "iconPath": "images/icon/index.png",
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "游戏库"
+      },
+      {
+        "selectedIconPath": "images/icon/about_active.png",
+        "iconPath": "images/icon/about.png",
+        "pagePath": "pages/appInfo/appInfo",
+        "text": "游戏资讯"
+      },
+      {
+        "selectedIconPath": "images/icon/about_active.png",
+        "iconPath": "images/icon/about.png",
+        "pagePath": "pages/appInfo/appInfo",
+        "text": "即将发售"
       },
       {
         "selectedIconPath": "images/icon/about_active.png",
