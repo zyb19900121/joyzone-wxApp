@@ -11,13 +11,19 @@
           <text class='game-name'>{{gameDetail.game_name}}</text>
         </view>
         <view class='info-item'>
+          <text class='game-name-en'>{{gameDetail.game_name_en}}</text>
+        </view>
+        <view class='info-item'>
           <text class='game-type' wx:for="{{gameTypeList}}">{{item}}</text>
+        </view>
+        <view class='info-item score'>
+          <text>评分：</text>
+          <text class='game-score'>{{gameDetail.game_score}}</text>
         </view>
 
 
 
       </view>
-
     </view>
   </view>
   <view class='tabs-container'>

@@ -1,16 +1,18 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
+    "pages/gameNews/gameNews",
     "pages/gameDetail/gameDetail",
+    "pages/gameCalendar/gameCalendar",
     "pages/appInfo/appInfo",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundColor":"#fafafa",
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundColor": "#fafafa",
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#409EFF",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#303133",
@@ -25,15 +27,15 @@
         "text": "游戏库"
       },
       {
-        "selectedIconPath": "images/icon/about_active.png",
-        "iconPath": "images/icon/about.png",
-        "pagePath": "pages/appInfo/appInfo",
+        "selectedIconPath": "images/icon/news_active.png",
+        "iconPath": "images/icon/news.png",
+        "pagePath": "pages/gameNews/gameNews",
         "text": "游戏资讯"
       },
       {
-        "selectedIconPath": "images/icon/about_active.png",
-        "iconPath": "images/icon/about.png",
-        "pagePath": "pages/appInfo/appInfo",
+        "selectedIconPath": "images/icon/calendar_active.png",
+        "iconPath": "images/icon/calendar.png",
+        "pagePath": "pages/gameCalendar/gameCalendar",
         "text": "即将发售"
       },
       {
@@ -44,5 +46,4 @@
       }
     ]
   }
-  
 }

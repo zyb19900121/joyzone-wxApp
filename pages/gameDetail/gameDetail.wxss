@@ -39,7 +39,7 @@
 }
 
 .image-container {
-  width: 50%;
+  width: 40%;
   z-index: 99;
   padding: 20rpx;
 }
@@ -50,7 +50,7 @@
 }
 
 .info-container {
-  width: 50%;
+  width: 60%;
   z-index: 99;
   padding: 40rpx;
   color: #fff;
@@ -58,15 +58,28 @@
 }
 
 .info-item {
-  margin-bottom: 20rpx;
+  margin-bottom: 25rpx;
+}
+
+.info-item.score {
+  display: flex;
+}
+
+.game-name-en{
+  color: #dcdcdc;
+  font-style: italic;
+}
+
+.game-score{
+  color: #FFD700;
 }
 
 .game-type {
-  padding: 5rpx 12px;
+  padding: 8rpx 15px;
   border-radius: 10rpx;
   font-size: 22rpx;
-  background: #fff;
-  color: #303133;
+  background: #409EFF;
+  color: #fff;
   margin-right: 10rpx;
 }
 

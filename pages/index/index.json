@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "游戏库",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "onReachBottomDistance": -50
 }

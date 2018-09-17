@@ -1,6 +1,63 @@
 <!--index.wxml-->
 <view class="index-container">
-  <view class="game-list-container">
+  <view class="condition-search">
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{searchParams.keyword}}" focus="{{inputShowed}}" bindinput="keywordInputTyping" />
+          <view class="weui-icon-clear" wx:if="{{searchParams.keyword.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
+        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">搜索</view>
+        </label>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+    </view>
+    <view class='select-group'>
+      <view class="weui-cells">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd">
+            <picker bindchange="bindPlatformChange" value="{{platformIndex}}" range="{{platformList}}">
+              <view class="weui-select">{{platformList[platformIndex]}}</view>
+            </picker>
+          </view>
+
+        </view>
+      </view>
+      <view class="weui-cells">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd">
+            <picker bindchange="bindGameTypeChange" value="{{gameTypeIndex}}" range="{{gameTypeList}}">
+              <view class="weui-select">{{gameTypeList[gameTypeIndex]}}</view>
+            </picker>
+          </view>
+
+        </view>
+      </view>
+      <view class="weui-cells">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd">
+            <picker bindchange="bindOrderByChange" value="{{orderByIndex}}" range="{{gameOrderByList}}">
+              <view class="weui-select last">{{gameOrderByList[orderByIndex]}}</view>
+            </picker>
+          </view>
+
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='no-result' wx:if="{{!gameList.length}}">暂无数据</view>
+
+  <view wx:else class="game-list-container">
+
+
+
     <view class="game-list">
       <view class="game-item" wx:for="{{gameList}}" data-gameId="{{item.id}}" data-gameName="{{item.game_name}}" bindtap='goGameDetail'>
         <view class='item-cover'>
@@ -10,7 +67,7 @@
       </view>
     </view>
   </view>
-  <view class='operation-container'>
+  <!-- <view class='operation-container'>
 
-  </view>
+  </view> -->
 </view>
