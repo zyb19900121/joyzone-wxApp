@@ -7,8 +7,8 @@
     <view class="swiper-tab-item {{currentTab==4?'active':''}}" data-current="4" bindtap="clickTab">评论</view>
   </view>
   <swiper class='swiper' current="{{currentTab}}" duration="300" bindchange="swiperTab">
-    <swiper-item class="swiper-item">
-      <view>简介 (Coming soon)</view>
+    <swiper-item class="swiper-item swiper-gameIntro">
+      <component-gameIntro id="componentGameIntro" class="component-game-intro" gameDetail="{{gameDetail}}"></component-gameIntro>
     </swiper-item>
     <swiper-item class="swiper-item">
       <view>资讯 (Coming soon)</view>
@@ -24,7 +24,7 @@
       <component-comment id="componentComment" class="component-comment" gameId="{{gameId}}"></component-comment>
     </swiper-item>
   </swiper>
-  <view class='comment-input' wx:if="{{currentTab==3}}">
+  <view class='comment-input' wx:if="{{currentTab==4}}">
     <!-- <text>发表评论</text> -->
     <!-- <textarea placeholder="请输入评论内容" cursor-spacing="20" /> -->
     <button class='show-modal-btn' type='text' open-type="getUserInfo" bindgetuserinfo="showCommentModal">发表评论</button>

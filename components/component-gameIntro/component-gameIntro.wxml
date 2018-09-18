@@ -1,0 +1,24 @@
+<!--components/component-gameIntro/component-gameIntro.wxml-->
+<view class='game-intro'>
+  <view class='game-info'>
+    <view class='info-part'>
+      <view class='info-item'>开发商：
+        <text class='info-content'>Nintendo</text>
+      </view>
+      <view class='info-item'>制作商：
+        <text class='info-content'>Nintendo</text>
+      </view>
+    </view>
+    <view class='info-part'>
+      <view class='info-item'>游戏语言：
+        <text class='info-content'>中文,英文,日文</text>
+      </view>
+      <view class='info-item'>发售日期：
+        <text class='info-content'>{{gameDetail.sale_date}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='game-desc'>
+    <text>{{gameDetail.game_desc}}</text>
+  </view>
+</view>

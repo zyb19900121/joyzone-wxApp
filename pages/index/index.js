@@ -167,6 +167,7 @@ Page({
     this.setData({
       'searchParams.platform': platform,
       platformIndex: e.detail.value,
+      'searchParams.currentPage': 1,
       scrollAction: 'refresh'
     })
     this.getGameList(this.data.searchParams);
@@ -213,6 +214,7 @@ Page({
     this.setData({
       'searchParams.gameType': gameType,
       gameTypeIndex: e.detail.value,
+      'searchParams.currentPage': 1,
       scrollAction: 'refresh'
     })
     this.getGameList(this.data.searchParams);
@@ -241,6 +243,7 @@ Page({
     this.setData({
       'searchParams.orderBy': orderBy,
       orderByIndex: e.detail.value,
+      'searchParams.currentPage': 1,
       scrollAction: 'refresh'
     })
     this.getGameList(this.data.searchParams);

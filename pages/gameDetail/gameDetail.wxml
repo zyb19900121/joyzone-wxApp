@@ -27,6 +27,6 @@
     </view>
   </view>
   <view class='tabs-container'>
-    <component-tabs gameId="{{gameId}}"></component-tabs>
+    <component-tabs gameId="{{gameId}}" gameDetail="{{gameDetail}}"></component-tabs>
   </view>
 </view>

@@ -8,6 +8,10 @@ Component({
     gameId: {
       type: Number,
       value: null
+    },
+    gameDetail:{
+      type: Object,
+      value: null
     }
   },
 

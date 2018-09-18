@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "component-modal": "/components/component-modal/component-modal",
-    "component-comment": "/components/component-comment/component-comment"
+    "component-comment": "/components/component-comment/component-comment",
+    "component-gameIntro": "/components/component-gameIntro/component-gameIntro"
   }
 }

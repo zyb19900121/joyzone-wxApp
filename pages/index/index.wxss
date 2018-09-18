@@ -7,6 +7,7 @@
   /* padding: 0 0rpx 10rpx 0rpx; */
   box-sizing: border-box;
   min-height: 100%;
+  position: relative;
 }
 
 .game-list-container {
@@ -58,13 +59,6 @@
 .operation-container {
   height: 100rpx;
   width: 100%;
-  background: gray;
-}
-
-.filter {
-  position: fixed;
-  width: 100%;
-  height: 60rpx;
   background: gray;
 }
 
