@@ -1,1 +1,5 @@
-<view>Coming Soon</view>
+<view class='main'>
+  <view class='item-cover'>
+    <image mode="aspectFit" src="/images/coming.jpg"></image>
+  </view>
+</view>

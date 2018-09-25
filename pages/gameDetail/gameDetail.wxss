@@ -65,9 +65,12 @@
   display: flex;
 }
 
+.game-name{
+  font-size: 32rpx;
+}
+
 .game-name-en{
-  color: #dcdcdc;
-  font-style: italic;
+  font-size: 26rpx;
 }
 
 .game-score{

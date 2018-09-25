@@ -3,15 +3,15 @@
   <view class='game-info'>
     <view class='info-part'>
       <view class='info-item'>开发商：
-        <text class='info-content'>Nintendo</text>
+        <text class='info-content'>{{gameDetail.game_developers}}</text>
       </view>
-      <view class='info-item'>制作商：
-        <text class='info-content'>Nintendo</text>
+      <view class='info-item'>发行商：
+        <text class='info-content'>{{gameDetail.game_publisher}}</text>
       </view>
     </view>
     <view class='info-part'>
       <view class='info-item'>游戏语言：
-        <text class='info-content'>中文,英文,日文</text>
+        <text class='info-content'>{{gameDetail.game_language}}</text>
       </view>
       <view class='info-item'>发售日期：
         <text class='info-content'>{{gameDetail.sale_date}}</text>

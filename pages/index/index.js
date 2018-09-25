@@ -8,12 +8,13 @@ Page({
     inputShowed: false,
     platformIndex: 0,
     gameTypeIndex: 0,
-    orderByIndex: 0,
+    orderByIndex: 1,
     searchParams: {
       pageSize: 18,
       currentPage: 1,
       platform: '',
       gameType: '',
+      orderBy: 'game_score DESC',
       keyword: ''
     },
     platformList: gameConfig.platformList,

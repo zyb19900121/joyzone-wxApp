@@ -26,7 +26,7 @@
 .game-item {
   color: #303133;
   width: 237rpx;
-  height: 300rpx;
+  height: 315rpx;
   /* background: gray; */
   padding: 20rpx;
   box-sizing: border-box;
@@ -39,7 +39,7 @@
 
 .item-cover {
   width: 100%;
-  height: 220rpx;
+  height: 246rpx;
 }
 
 .item-cover image {
