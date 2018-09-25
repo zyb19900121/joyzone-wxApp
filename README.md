@@ -5,6 +5,13 @@
 近三周的时间已将整体架构、部分接口、UI等工作完成了初步的实现，因项目中对数据的要求较大，所以本人接下来的开发重心将会放到后端管理系统和后台服务中上去，
 加上最近工作较忙，能自由支配的时间太少（懒也是个因素。。。），导致进度有点慢，不过本人一定会坚持把这三个项目进行下去的。
 
+# 阶段性界面截图
+
+<img width="300" height="auto" src="http://joyzone.xyz:9090/image/app_01.jpg" />
+
+<img width="300" height="auto" src="http://joyzone.xyz:9090/image/app_02.jpg" />
+
+<img width="300" height="auto" src="http://joyzone.xyz:9090/image/app_03.jpg" />
 
 更新（2018-09-14）：
 
