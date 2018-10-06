@@ -1,8 +1,8 @@
 <wxs src="../../utils/common.wxs" module="common" />
 <view class="component-list">
-  <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="{{loadList ? 'scrollToUpper' : ''}}" bindscrolltolower="scrollToLower"
-    bindscroll="scrollhandle">
-    <view class='comment-list-container'>
+  <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="{{loadList ? 'scrollToUpper' : ''}}" bindscrolltolower="scrollToLower" bindscroll="scrollhandle">
+    <view class='no-result' wx:if="{{!commentList.length}}">暂无评论</view>
+    <view class='comment-list-container' wx:else>
       <view class='comment-item' wx:for="{{commentList}}">
         <view>
           <image wx:if="{{item.user_avatar == '/public/system/default_avatar.jpg'}}" class='user-avatar' mode="aspectFit" src="{{baseUrl}}{{item.user_avatar}}"></image>

@@ -1,5 +1,16 @@
-<view class='main'>
-  <view class='item-cover'>
-    <image mode="aspectFit" src="/images/coming.jpg"></image>
+<view class='game-news'>
+  <view class='swiper-container'>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+      <block wx:for="{{newsSwiperList}}" wx:key="*this">
+        <swiper-item>
+          <view class='swiper-item'>
+            <image class='swiper-img' mode="scaleToFill" src="{{item.img}}"></image>
+            <view class='swiper-title'>
+              {{item.title}}
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
 </view>

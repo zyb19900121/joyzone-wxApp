@@ -20,9 +20,6 @@
           <text>评分：</text>
           <text class='game-score'>{{gameDetail.game_score}}</text>
         </view>
-
-
-
       </view>
     </view>
   </view>

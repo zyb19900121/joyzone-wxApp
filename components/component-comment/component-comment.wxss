@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-.comment-list-container{
+.comment-list-container {
   height: calc(100% + 5rpx);
 }
 
@@ -36,6 +36,14 @@
   color: #909399;
 }
 
-.content{
+.content {
   margin-top: 10rpx;
+}
+
+.no-result {
+  height: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
 }

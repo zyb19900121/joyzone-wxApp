@@ -38,7 +38,7 @@
 				{
 					"id": 0,
 					"name": "dev",
-					"pathName": "pages/gameDetail/gameDetail",
+					"pathName": "pages/gameNews/gameNews",
 					"query": "gameId=1"
 				}
 			]
