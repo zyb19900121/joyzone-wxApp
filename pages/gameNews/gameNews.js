@@ -1,10 +1,13 @@
 // pages/gameNews/gameNews.js
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    baseUrl: app.globalData.baseUrl,
     newsSwiperList: [{
       id: '1',
       title: "《精灵宝可梦 Let's Go 皮卡丘/伊布》公布！中文版同步",
@@ -25,14 +28,31 @@ Page({
     interval: 2000,
     duration: 500,
     previousMargin: 0,
-    nextMargin: 0
+    nextMargin: 0,
+
+    upperThreshold:-50,
+    lowerThreshold:-50,
+    scrollX:false,
+    scrollY:true,
+
+
+
+
+    searchParams: {
+      pageSize: 16,
+      currentPage: 1,
+      platform: ""
+    },
+    scrollAction: '',
+    newsList: null,
+    newsTotal: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.getNewsList(this.data.searchParams);
   },
 
   /**
@@ -108,5 +128,48 @@ Page({
     this.setData({
       duration: e.detail.value
     })
-  }
+  },
+
+  getNewsList(searchParams) {
+    wx.showLoading({
+      title: '加载中...',
+    })
+    app.userService.getNewsList(searchParams)
+      .then(res => {
+        console.log(res)
+        // if (this.data.scrollAction == 'refresh') {
+        this.setData({
+          newsList: res.list,
+          newsTotal: res.total,
+          scrollAction: '',
+          // loadList: true
+        })
+        wx.hideLoading();
+        // } 
+        // else if (this.data.scrollAction == 'get_more') {
+        //   let tempArr = [...this.data.commentList, ...res.list];
+        //   this.setData({
+        //     commentList: tempArr,
+        //     commentTotal: res.total,
+        //     scrollAction: '',
+        //     loadList: true
+        //   })
+        //   wx.hideLoading();
+        // } else {
+        //   this.setData({
+        //     commentList: res.list,
+        //     commentTotal: res.total,
+        //     scrollAction: '',
+        //     loadList: true
+        //   })
+        // }
+
+
+        // wx.stopPullDownRefresh()
+      })
+      .catch(res => {
+        // wx.stopPullDownRefresh()
+        app.requestErrorHandle()
+      })
+  },
 })

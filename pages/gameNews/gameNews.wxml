@@ -1,3 +1,4 @@
+<wxs src="../../utils/common.wxs" module="common" />
 <view class='game-news'>
   <view class='swiper-container'>
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
@@ -13,4 +14,20 @@
       </block>
     </swiper>
   </view>
+  <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="{{loadList ? 'scrollToUpper' : ''}}" bindscrolltolower="scrollToLower" bindscroll="scrollhandle">
+    <view class='no-result' wx:if="{{newsList.length==0}}">暂无数据</view>
+    <view class='news-list-container' wx:else>
+      <view class='news-item' wx:for="{{newsList}}">
+        <view class='left-part'>
+          <view class='news-title'>
+            {{item.news_title}}
+          </view>
+          <view class='news-date'>{{common.formatTime(item.create_date)}}</view>
+        </view>
+        <view class='right-part'>
+          <image class='news-thumbnail' mode="scaleToFill" src="{{baseUrl}}{{item.news_thumbnail}}"></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
 </view>

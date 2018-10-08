@@ -46,6 +46,14 @@ class UserService {
   }
 
   /**
+   * 获取资讯列表
+   */
+  getNewsList(data) {
+    return this._request.getRequest(this._baseUrl + '/api/gameNews', data, this._defaultHeader)
+      .then(res => res.data)
+  }
+
+  /**
    * 发表评论
    */
   saveComment(data) {
@@ -55,8 +63,8 @@ class UserService {
   }
 
   /**
-  * 发表评论
-  */
+   * 发表评论
+   */
   getCommentList(data) {
     return this._request.getRequest(this._baseUrl + '/api/gameComment', data, this._defaultHeader)
       .then(res => res.data)

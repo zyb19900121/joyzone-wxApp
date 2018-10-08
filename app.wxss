@@ -15,7 +15,7 @@ page {
 次要字体 #909399
 选中颜色 #d81e06
 边框颜色 #dcdcdc
-列表边框 ##f1f1f1
+列表边框 #f1f1f1
 金色（评分）#FFD700
 字体大小 22rpx
 border-radius: 10rpx;
