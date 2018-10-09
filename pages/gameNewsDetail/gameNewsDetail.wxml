@@ -1,0 +1,2 @@
+<!--pages/gameNewsDetail/gameNewsDetail.wxml-->
+<text>{{newsId}}</text>

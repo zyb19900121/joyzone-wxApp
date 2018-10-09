@@ -8,19 +8,21 @@ Page({
    */
   data: {
     baseUrl: app.globalData.baseUrl,
-    newsSwiperList: [{
-      id: '1',
-      title: "《精灵宝可梦 Let's Go 皮卡丘/伊布》公布！中文版同步",
-      img: 'http://joyzone.xyz:9090/image/news1.jpeg'
-    }, {
-      id: '2',
-      title: "《最后生还者2》新消息：开发进度约50% 明年E3将进行展示",
-      img: 'http://joyzone.xyz:9090/image/news2.jpeg'
-    }, {
-      id: '3',
-      title: "《荒野大镖客2》最小安装容量105GB 在线模式最大支持32人",
-      img: 'http://joyzone.xyz:9090/image/news3.jpeg'
-    }],
+    newsSwiperList: [
+      //   {
+      //   id: '1',
+      //   title: "《精灵宝可梦 Let's Go 皮卡丘/伊布》公布！中文版同步",
+      //   img: 'http://joyzone.xyz:9090/image/news1.jpeg'
+      // }, {
+      //   id: '2',
+      //   title: "《最后生还者2》新消息：开发进度约50% 明年E3将进行展示",
+      //   img: 'http://joyzone.xyz:9090/image/news2.jpeg'
+      // }, {
+      //   id: '3',
+      //   title: "《荒野大镖客2》最小安装容量105GB 在线模式最大支持32人",
+      //   img: 'http://joyzone.xyz:9090/image/news3.jpeg'
+      // }
+    ],
     indicatorDots: false,
     vertical: false,
     autoplay: true,
@@ -30,18 +32,16 @@ Page({
     previousMargin: 0,
     nextMargin: 0,
 
-    upperThreshold:-50,
-    lowerThreshold:-50,
-    scrollX:false,
-    scrollY:true,
-
-
-
+    upperThreshold: -50,
+    lowerThreshold: -50,
+    scrollX: false,
+    scrollY: true,
 
     searchParams: {
       pageSize: 16,
       currentPage: 1,
-      platform: ""
+      platform: "",
+      isBanner: false
     },
     scrollAction: '',
     newsList: null,
@@ -134,6 +134,23 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
+
+    app.userService.getNewsList({
+        pageSize: 16,
+        currentPage: 1,
+        isBanner: true
+      })
+      .then(res => {
+        console.log(res)
+        this.setData({
+          newsSwiperList: res.list,
+          // newsTotal: res.total,
+        })
+      })
+      .catch(res => {
+        app.requestErrorHandle()
+      })
+
     app.userService.getNewsList(searchParams)
       .then(res => {
         console.log(res)
@@ -172,4 +189,11 @@ Page({
         app.requestErrorHandle()
       })
   },
+  getNewsDetail(event) {
+    let newsId = event.currentTarget.dataset.newsid;
+    console.log(newsId);
+    wx.navigateTo({
+      url: `../gameNewsDetail/gameNewsDetail?newsId=${newsId}`
+    })
+  }
 })

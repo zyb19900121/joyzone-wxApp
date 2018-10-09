@@ -62,17 +62,44 @@ swiper {
   justify-content: space-between;
 }
 
-.news-title{
+.news-title {
   font-size: 30rpx;
 }
-.news-date{
+
+.news-info {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding-right: 50rpx;
+}
+
+.news-date, .news-views {
   font-size: 24rpx;
   color: #909399;
 }
+
+.news-views {
+  margin-left: 40rpx;
+  display: flex;
+  flex-flow: row;
+}
+
+.views-icon {
+  width: 20px;
+  height: 100%;
+}
+
+.news-views-count {
+  margin-left: 6rpx;
+  font-size: 24rpx;
+  color: #909399;
+}
+
 .right-part {
   width: 25%;
 }
-.news-thumbnail{
+
+.news-thumbnail {
   width: 100%;
   height: 100%;
 }

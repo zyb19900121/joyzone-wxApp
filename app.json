@@ -5,7 +5,8 @@
     "pages/gameDetail/gameDetail",
     "pages/gameCalendar/gameCalendar",
     "pages/appInfo/appInfo",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/gameNewsDetail/gameNewsDetail"
   ],
   "window": {
     "backgroundColor": "#fafafa",

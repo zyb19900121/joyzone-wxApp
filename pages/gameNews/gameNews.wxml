@@ -2,12 +2,12 @@
 <view class='game-news'>
   <view class='swiper-container'>
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
-      <block wx:for="{{newsSwiperList}}" wx:key="*this">
-        <swiper-item>
+      <block wx:for="{{newsSwiperList}}" wx:key="*this" >
+        <swiper-item data-newsId="{{item.id}}" bindtap='getNewsDetail'>
           <view class='swiper-item'>
-            <image class='swiper-img' mode="scaleToFill" src="{{item.img}}"></image>
+            <image class='swiper-img' mode="scaleToFill" src="{{baseUrl}}{{item.news_thumbnail}}"></image>
             <view class='swiper-title'>
-              {{item.title}}
+              {{item.news_title}}
             </view>
           </view>
         </swiper-item>
@@ -17,12 +17,18 @@
   <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="{{loadList ? 'scrollToUpper' : ''}}" bindscrolltolower="scrollToLower" bindscroll="scrollhandle">
     <view class='no-result' wx:if="{{newsList.length==0}}">暂无数据</view>
     <view class='news-list-container' wx:else>
-      <view class='news-item' wx:for="{{newsList}}">
+      <view class='news-item' wx:for="{{newsList}}" data-newsId="{{item.id}}" bindtap='getNewsDetail'>
         <view class='left-part'>
           <view class='news-title'>
             {{item.news_title}}
           </view>
-          <view class='news-date'>{{common.formatTime(item.create_date)}}</view>
+          <view class='news-info'>
+            <view class='news-date'>{{common.formatTime(item.create_date)}}</view>
+            <view class='news-views'>
+              <image class='views-icon' mode="aspectFit" src="../../images/icon/attention.png"></image>
+              <view class='news-views-count'>10</view>
+            </view>
+          </view>
         </view>
         <view class='right-part'>
           <image class='news-thumbnail' mode="scaleToFill" src="{{baseUrl}}{{item.news_thumbnail}}"></image>
