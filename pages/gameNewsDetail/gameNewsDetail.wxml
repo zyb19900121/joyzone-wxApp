@@ -1,2 +1,4 @@
 <!--pages/gameNewsDetail/gameNewsDetail.wxml-->
-<text>{{newsId}}</text>
+<import src="../..//wxParse/wxParse.wxml"/>
+
+<template is="wxParse" data="{{wxParseData:newsContent.nodes}}"/>

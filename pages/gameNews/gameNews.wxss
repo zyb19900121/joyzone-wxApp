@@ -103,3 +103,28 @@ swiper {
   width: 100%;
   height: 100%;
 }
+
+.swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal {
+  margin-bottom: 45rpx;
+  /* margin-left: 260rpx */
+}
+
+.swiper-box .wx-swiper-dot {
+  width: 30rpx;
+  display: inline-flex;
+  height: 10rpx;
+  margin-left: 10rpx;
+  justify-content: space-between;
+}
+
+.swiper-box .wx-swiper-dot::before {
+  content: '';
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8rpx;
+  border: 1px solid white;
+}
+
+.swiper-box .wx-swiper-dot-active::before {
+  background: #d81e06;
+}

@@ -8,22 +8,8 @@ Page({
    */
   data: {
     baseUrl: app.globalData.baseUrl,
-    newsSwiperList: [
-      //   {
-      //   id: '1',
-      //   title: "《精灵宝可梦 Let's Go 皮卡丘/伊布》公布！中文版同步",
-      //   img: 'http://joyzone.xyz:9090/image/news1.jpeg'
-      // }, {
-      //   id: '2',
-      //   title: "《最后生还者2》新消息：开发进度约50% 明年E3将进行展示",
-      //   img: 'http://joyzone.xyz:9090/image/news2.jpeg'
-      // }, {
-      //   id: '3',
-      //   title: "《荒野大镖客2》最小安装容量105GB 在线模式最大支持32人",
-      //   img: 'http://joyzone.xyz:9090/image/news3.jpeg'
-      // }
-    ],
-    indicatorDots: false,
+    newsSwiperList: [],
+    indicatorDots: true,
     vertical: false,
     autoplay: true,
     circular: true,
@@ -191,9 +177,17 @@ Page({
   },
   getNewsDetail(event) {
     let newsId = event.currentTarget.dataset.newsid;
-    console.log(newsId);
     wx.navigateTo({
       url: `../gameNewsDetail/gameNewsDetail?newsId=${newsId}`
     })
+
+    if (event.currentTarget.dataset.viewscount) {
+      let index = event.currentTarget.dataset.index;
+      let count = event.currentTarget.dataset.viewscount + 1;
+      this.setData({
+        [`newsList[${index}].views_count`]: count
+      })
+    }
+
   }
 })

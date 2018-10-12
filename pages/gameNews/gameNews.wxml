@@ -1,7 +1,7 @@
 <wxs src="../../utils/common.wxs" module="common" />
 <view class='game-news'>
   <view class='swiper-container'>
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+    <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
       <block wx:for="{{newsSwiperList}}" wx:key="*this" >
         <swiper-item data-newsId="{{item.id}}" bindtap='getNewsDetail'>
           <view class='swiper-item'>
@@ -17,7 +17,8 @@
   <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="{{loadList ? 'scrollToUpper' : ''}}" bindscrolltolower="scrollToLower" bindscroll="scrollhandle">
     <view class='no-result' wx:if="{{newsList.length==0}}">暂无数据</view>
     <view class='news-list-container' wx:else>
-      <view class='news-item' wx:for="{{newsList}}" data-newsId="{{item.id}}" bindtap='getNewsDetail'>
+      <view class='news-item' wx:for="{{newsList}}" wx:key="{{index}}" data-newsId="{{item.id}}" data-index="{{index}}" 
+      data-viewsCount="{{item.views_count}}" bindtap='getNewsDetail'>
         <view class='left-part'>
           <view class='news-title'>
             {{item.news_title}}
@@ -26,7 +27,7 @@
             <view class='news-date'>{{common.formatTime(item.create_date)}}</view>
             <view class='news-views'>
               <image class='views-icon' mode="aspectFit" src="../../images/icon/attention.png"></image>
-              <view class='news-views-count'>10</view>
+              <view class='news-views-count'>{{item.views_count}}</view>
             </view>
           </view>
         </view>

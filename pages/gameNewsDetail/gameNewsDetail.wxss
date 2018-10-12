@@ -1,1 +1,2 @@
 /* pages/gameNewsDetail/gameNewsDetail.wxss */
+@import "/wxParse/wxParse.wxss";
