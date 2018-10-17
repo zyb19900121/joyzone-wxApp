@@ -18,20 +18,22 @@ Page({
     previousMargin: 0,
     nextMargin: 0,
 
-    upperThreshold: -50,
-    lowerThreshold: -50,
+    upperThreshold: 10,
+    lowerThreshold: 10,
     scrollX: false,
     scrollY: true,
 
     searchParams: {
-      pageSize: 16,
+      pageSize: 12,
       currentPage: 1,
       platform: "",
       isBanner: false
     },
+    isTouchEnd: true, //解决多次触发的问题
     scrollAction: '',
     newsList: null,
-    newsTotal: ''
+    newsTotal: '',
+    // loadList: true
   },
 
   /**
@@ -117,12 +119,15 @@ Page({
   },
 
   getNewsList(searchParams) {
-    wx.showLoading({
-      title: '加载中...',
-    })
+
+    if (!this.data.scrollAction === 'refresh') {
+      wx.showLoading({
+        title: '加载中...',
+      })
+    }
 
     app.userService.getNewsList({
-        pageSize: 16,
+        pageSize: 12,
         currentPage: 1,
         isBanner: true
       })
@@ -140,34 +145,32 @@ Page({
     app.userService.getNewsList(searchParams)
       .then(res => {
         console.log(res)
-        // if (this.data.scrollAction == 'refresh') {
-        this.setData({
-          newsList: res.list,
-          newsTotal: res.total,
-          scrollAction: '',
-          // loadList: true
-        })
-        wx.hideLoading();
-        // } 
-        // else if (this.data.scrollAction == 'get_more') {
-        //   let tempArr = [...this.data.commentList, ...res.list];
-        //   this.setData({
-        //     commentList: tempArr,
-        //     commentTotal: res.total,
-        //     scrollAction: '',
-        //     loadList: true
-        //   })
-        //   wx.hideLoading();
-        // } else {
-        //   this.setData({
-        //     commentList: res.list,
-        //     commentTotal: res.total,
-        //     scrollAction: '',
-        //     loadList: true
-        //   })
-        // }
-
-
+        if (this.data.scrollAction == 'refresh') {
+          this.setData({
+            newsList: res.list,
+            newsTotal: res.total,
+            scrollAction: '',
+            // loadList: true
+          })
+          wx.hideLoading();
+        } else if (this.data.scrollAction == 'get_more') {
+          let tempArr = [...this.data.newsList, ...res.list];
+          this.setData({
+            newsList: tempArr,
+            newsTotal: res.total,
+            scrollAction: '',
+            // loadList: true
+          })
+          wx.hideLoading();
+        } else {
+          this.setData({
+            newsList: res.list,
+            newsTotal: res.total,
+            scrollAction: '',
+            // loadList: true
+          })
+          wx.hideLoading();
+        }
         // wx.stopPullDownRefresh()
       })
       .catch(res => {
@@ -181,13 +184,70 @@ Page({
       url: `../gameNewsDetail/gameNewsDetail?newsId=${newsId}`
     })
 
-    if (event.currentTarget.dataset.viewscount) {
+    if (event.currentTarget.dataset.viewscount >= 0) {
       let index = event.currentTarget.dataset.index;
       let count = event.currentTarget.dataset.viewscount + 1;
       this.setData({
         [`newsList[${index}].views_count`]: count
       })
     }
-
+  },
+  scrollhandle(e) {
+    // if (e.detail.scrollTop == 0) {
+    //   this.setData({
+    //     loadList: true
+    //   })
+    // }
+    // console.log(e.detail.scrollTop)
+  },
+  scrollToUpper() {
+    if (!this.data.isTouchEnd) {
+      return;
+    }
+    wx.showLoading({
+      title: '刷新中...',
+    })
+    this.setData({
+      searchParams: {
+        pageSize: this.data.searchParams.pageSize,
+        currentPage: 1,
+        platform: "",
+        isBanner: false
+      },
+      scrollAction: 'refresh',
+      isTouchEnd: false
+    })
+    this.getNewsList(this.data.searchParams);
+  },
+  scrollToLower() {
+    if (!this.data.isTouchEnd) {
+      return;
+    }
+    if (this.data.newsList.length == this.data.newsTotal) {
+      wx.showToast({
+        title: '没有更多了',
+        icon: 'none'
+      })
+      return false;
+    }
+    wx.showLoading({
+      title: '加载中...',
+    })
+    this.setData({
+      searchParams: {
+        pageSize: this.data.searchParams.pageSize,
+        currentPage: this.data.searchParams.currentPage + 1,
+        platform: "",
+        isBanner: false
+      },
+      scrollAction: 'get_more',
+      isTouchEnd: false
+    })
+    this.getNewsList(this.data.searchParams);
+  },
+  handleTouchEnd() {
+    this.setData({
+      isTouchEnd: true
+    })
   }
 })

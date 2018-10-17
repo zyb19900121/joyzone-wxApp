@@ -12,11 +12,11 @@ Component({
     },
     upperThreshold: {
       type: Number,
-      value: -50
+      value: 0
     },
     lowerThreshold: {
       type: Number,
-      value: -50
+      value: 0
     },
     scrollX: {
       type: Boolean,
@@ -39,14 +39,15 @@ Component({
     baseUrl: app.globalData.baseUrl,
     commentParams: {
       gameId: '',
-      pageSize: 10,
+      pageSize: 12,
       currentPage: 1
     },
     commentList: [],
     commentTotal: '',
     scrollAction: '',
     scrollTop: '', //解决多次触发的问题
-    loadList: true //解决多次触发的问题
+    // loadList: true //解决多次触发的问题
+    isTouchEnd: true, //解决多次触发的问题
   },
 
   ready() {
@@ -58,14 +59,17 @@ Component({
    */
   methods: {
     scrollhandle(e) {
-      if (e.detail.scrollTop == 0){
-        this.setData({
-          loadList:true
-        })
-      }
-      console.log(e.detail.scrollTop)
+      // if (e.detail.scrollTop == 0) {
+      //   this.setData({
+      //     loadList: true
+      //   })
+      // }
+      // console.log(e.detail.scrollTop)
     },
     scrollToUpper() {
+      if (!this.data.isTouchEnd) {
+        return;
+      }
       wx.showLoading({
         title: '刷新中...',
       })
@@ -75,11 +79,15 @@ Component({
           currentPage: 1
         },
         scrollAction: 'refresh',
-        loadList: false
+        isTouchEnd: false
+        // loadList: false
       })
       this.getCommentList(this.data.commentParams);
     },
     scrollToLower() {
+      if (!this.data.isTouchEnd) {
+        return;
+      }
       if (this.data.commentList.length == this.data.commentTotal) {
         wx.showToast({
           title: '没有更多了',
@@ -96,7 +104,8 @@ Component({
           currentPage: this.data.commentParams.currentPage + 1
         },
         scrollAction: 'get_more',
-        loadList: false
+        isTouchEnd: false
+        // loadList: false
       })
       this.getCommentList(this.data.commentParams);
     },
@@ -119,7 +128,7 @@ Component({
               commentList: tempArr,
               commentTotal: res.total,
               scrollAction: '',
-              loadList: true
+              // loadList: true
             })
             wx.hideLoading();
           } else {
@@ -127,7 +136,7 @@ Component({
               commentList: res.list,
               commentTotal: res.total,
               scrollAction: '',
-              loadList: true
+              // loadList: true
             })
           }
 
@@ -139,5 +148,10 @@ Component({
           app.requestErrorHandle()
         })
     },
+    handleTouchEnd() {
+      this.setData({
+        isTouchEnd:true
+      })
+    }
   }
 })

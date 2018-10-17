@@ -1,0 +1,17 @@
+/* components/component-gameNews/component-gameNews.wxss */
+
+.news-list {
+  height: 100%;
+}
+
+.scroll-list {
+  height: 100%;
+}
+
+.no-result {
+  height: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}

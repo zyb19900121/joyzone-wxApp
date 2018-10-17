@@ -3,6 +3,7 @@
   "usingComponents": {
     "component-modal": "/components/component-modal/component-modal",
     "component-comment": "/components/component-comment/component-comment",
-    "component-gameIntro": "/components/component-gameIntro/component-gameIntro"
+    "component-gameIntro": "/components/component-gameIntro/component-gameIntro",
+    "component-gameNews": "/components/component-gameNews/component-gameNews"
   }
 }

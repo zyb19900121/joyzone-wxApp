@@ -53,12 +53,25 @@
   justify-content: start;
 }
 
+.swiper-item.swiper-gameNews {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+}
+
 .component-game-intro{
   height: 100%;
   width: 100%;
 }
 
 .component-comment{
+  height: 100%;
+  width: 100%;
+}
+
+.component-gameNews{
   height: 100%;
   width: 100%;
 }

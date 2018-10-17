@@ -1,4 +1,6 @@
 <!--pages/gameNewsDetail/gameNewsDetail.wxml-->
 <import src="../..//wxParse/wxParse.wxml"/>
 
-<template is="wxParse" data="{{wxParseData:newsContent.nodes}}"/>
+<view class='rich-text'>
+  <template is="wxParse" data="{{wxParseData:newsContent.nodes}}"/>
+</view>

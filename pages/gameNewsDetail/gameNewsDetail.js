@@ -7,12 +7,6 @@ Page({
    * 页面的初始数据
    * @import "/wxParse/wxParse.wxss";
    * 
-   * 
-   * 
-   * 
-   * 
-   * 
-   * ddddssd
    */
   data: {
     newsId: '',
@@ -32,7 +26,7 @@ Page({
         //   newsDetail: res
         // })
         console.log('newsDetail', this.data.newsDetail)
-        WxParse.wxParse('newsContent', 'html', `<div class="ql-editor">${res.news_content}</div>`, this, 5);
+        WxParse.wxParse('newsContent', 'html', `<div class="ql-editor">${res.news_content}</div>`, this, 20);
         wx.hideLoading();
 
         this.data.newsDetail.newsTitle = res.news_title;

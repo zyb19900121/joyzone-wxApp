@@ -38,8 +38,8 @@
 				{
 					"id": 0,
 					"name": "dev",
-					"pathName": "pages/gameNews/gameNews",
-					"query": "gameId=1"
+					"pathName": "pages/gameDetail/gameDetail",
+					"query": "gameId=183"
 				}
 			]
 		}

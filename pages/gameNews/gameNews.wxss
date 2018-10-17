@@ -47,6 +47,10 @@ swiper {
   height: 62%;
 }
 
+.news-list-container {
+  height: calc(100% + 5rpx);
+}
+
 .news-item {
   height: 150rpx;
   display: flex;
@@ -60,6 +64,8 @@ swiper {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+  padding-right:20rpx;
+  box-sizing: border-box;
 }
 
 .news-title {

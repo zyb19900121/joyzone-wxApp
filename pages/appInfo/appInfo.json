@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "关于我们",
-  "disableScroll": true
+  "disableScroll": true,
+  "usingComponents": {
+    "i-notice-bar": "../../dist/notice-bar/index"
+  }
 }

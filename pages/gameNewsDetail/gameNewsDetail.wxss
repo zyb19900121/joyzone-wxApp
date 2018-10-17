@@ -1,2 +1,5 @@
 /* pages/gameNewsDetail/gameNewsDetail.wxss */
 @import "/wxParse/wxParse.wxss";
+.rich-text{
+  padding: 20rpx;
+}

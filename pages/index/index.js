@@ -10,7 +10,7 @@ Page({
     gameTypeIndex: 0,
     orderByIndex: 1,
     searchParams: {
-      pageSize: 18,
+      pageSize: 12,
       currentPage: 1,
       platform: '',
       gameType: '',
@@ -26,8 +26,14 @@ Page({
     // wx.startPullDownRefresh()
     this.getGameList();
     this.saveSystemInfo();
+  },
+  /**
+ * 用户点击右上角分享
+ */
+  onShareAppMessage: function () {
 
   },
+ 
   //保存访问用户的设备信息
   saveSystemInfo() {
     wx.getSystemInfo({

@@ -10,8 +10,8 @@
     <swiper-item class="swiper-item swiper-gameIntro">
       <component-gameIntro id="componentGameIntro" class="component-game-intro" gameDetail="{{gameDetail}}"></component-gameIntro>
     </swiper-item>
-    <swiper-item class="swiper-item">
-      <view>资讯 (Coming soon)</view>
+    <swiper-item class="swiper-item swiper-gameNews">
+      <component-gameNews id="componentGameNews" class="component-gameNews" gameId="{{gameId}}"></component-gameNews>
     </swiper-item>
     <swiper-item class="swiper-item">
       <view>攻略 (Coming soon)</view>

@@ -2,7 +2,7 @@
 <view class='game-news'>
   <view class='swiper-container'>
     <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
-      <block wx:for="{{newsSwiperList}}" wx:key="*this" >
+      <block wx:for="{{newsSwiperList}}" wx:key="*this">
         <swiper-item data-newsId="{{item.id}}" bindtap='getNewsDetail'>
           <view class='swiper-item'>
             <image class='swiper-img' mode="scaleToFill" src="{{baseUrl}}{{item.news_thumbnail}}"></image>
@@ -14,11 +14,11 @@
       </block>
     </swiper>
   </view>
-  <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="{{loadList ? 'scrollToUpper' : ''}}" bindscrolltolower="scrollToLower" bindscroll="scrollhandle">
+  <scroll-view class='scroll-list' scroll-with-animation="{{true}}" enable-back-to-top="{{true}}" upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="scrollToUpper"
+    bindscrolltolower="scrollToLower" bindscroll="scrollhandle" bindtouchend="handleTouchEnd">
     <view class='no-result' wx:if="{{newsList.length==0}}">暂无数据</view>
     <view class='news-list-container' wx:else>
-      <view class='news-item' wx:for="{{newsList}}" wx:key="{{index}}" data-newsId="{{item.id}}" data-index="{{index}}" 
-      data-viewsCount="{{item.views_count}}" bindtap='getNewsDetail'>
+      <view class='news-item' wx:for="{{newsList}}" wx:key="{{index}}" data-newsId="{{item.id}}" data-index="{{index}}" data-viewsCount="{{item.views_count}}" bindtap='getNewsDetail'>
         <view class='left-part'>
           <view class='news-title'>
             {{item.news_title}}
