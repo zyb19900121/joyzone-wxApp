@@ -7,11 +7,16 @@
 
 ## 阶段性界面截图
 
-<img width="300" height="auto" src="http://joyzone.xyz:9090/image/app_01.jpg" />
+<img width="300" height="auto" src="http://static.joyzone.xyz/image/app_01.jpg" />
 
-<img width="300" height="auto" src="http://joyzone.xyz:9090/image/app_02.jpg" />
+<img width="300" height="auto" src="http://static.joyzone.xyz/image/app_02.jpg" />
 
-<img width="300" height="auto" src="http://joyzone.xyz:9090/image/app_03.jpg" />
+<img width="300" height="auto" src="http://static.joyzone.xyz/image/app_03.jpg" />
+
+<img width="300" height="auto" src="http://static.joyzone.xyz/image/app_04.jpg" />
+
+<img width="300" height="auto" src="http://static.joyzone.xyz/image/app_05.jpg" />
+
 
 更新（2018-09-14）：
 
