@@ -17,8 +17,13 @@
           <text class='game-type' wx:for="{{gameTypeList}}">{{item}}</text>
         </view>
         <view class='info-item score'>
-          <text>评分：</text>
-          <text class='game-score'>{{gameDetail.game_score}}</text>
+          <!-- <text>评分：</text> -->
+          <i-cell>
+            <i-rate disabled="{{true}}" value="{{gameDetail.game_score/2}}">
+              {{gameDetail.game_score}}
+            </i-rate>
+          </i-cell>
+          <!-- <text class='game-score'>{{gameDetail.game_score}}</text> -->
         </view>
       </view>
     </view>

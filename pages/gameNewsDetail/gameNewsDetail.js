@@ -16,6 +16,7 @@ Page({
 
   //根据ID获取游戏详细信息
   getNewsDetail(newsId) {
+    console.log('newsis!!',newsId)
     wx.showLoading({
       title: '加载中...',
     })
@@ -25,7 +26,7 @@ Page({
         // this.setData({
         //   newsDetail: res
         // })
-        console.log('newsDetail', this.data.newsDetail)
+        console.log('newsDetail', res)
         WxParse.wxParse('newsContent', 'html', `<div class="ql-editor">${res.news_content}</div>`, this, 20);
         wx.hideLoading();
 
@@ -59,6 +60,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log('options',options)
     this.setData({
       newsId: options.newsId
     })

@@ -51,10 +51,12 @@
     </view>
   </view>
 
+  <view class="container" wx:if="{{spinShow}}">
+    <i-spin fix></i-spin>
+  </view>
 
-  <view class='no-result' wx:if="{{!gameList.length}}">暂无数据</view>
 
-  <view wx:else class="game-list-container">
+  <view wx:if="{{gameList.length}}" class="game-list-container">
     <view class="game-list">
       <view class="game-item" wx:for="{{gameList}}" data-gameId="{{item.id}}" data-gameName="{{item.game_name}}" bindtap='goGameDetail'>
         <view class='item-cover'>
@@ -63,8 +65,11 @@
         <view class='item-title'>{{item.game_name}}</view>
       </view>
     </view>
-  </view>
-  <!-- <view class='operation-container'>
 
-  </view> -->
+    <i-load-more wx:if="{{gameList.length === gameTotal}}" loading="{{ false }}" />
+    <i-load-more wx:else/>
+  </view>
+
+  <i-load-more wx:if="{{!gameList.length && !spinShow}}" class='no-result' tip="暂无数据" loading="{{ false }}" />
+
 </view>

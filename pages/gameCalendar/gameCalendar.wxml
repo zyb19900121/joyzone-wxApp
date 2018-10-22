@@ -1,5 +1,63 @@
+<wxs src="../../utils/common.wxs" module="common" />
 <view class='main'>
-  <view class='item-cover'>
-    <image mode="aspectFit" src="/images/coming.jpg"></image>
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{searchParams.keyword}}" focus="{{inputShowed}}" bindinput="keywordInputTyping" />
+        <view class="weui-icon-clear" wx:if="{{searchParams.keyword.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索</view>
+      </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
   </view>
+  <i-sticky scrollTop="{{scrollTop}}">
+    <i-sticky-item wx:for="{{gameList}}" wx:key="{{index}}" i-class="i-sticky-demo-title">
+      <view class='group-key' slot="title">
+        {{item.key}}
+      </view>
+      <view slot="content">
+        <view wx:for="{{item.list}}" wx:key="{{index}}" class="i-sticky-demo-item">
+          <i-swipeout i-class="i-swipeout-demo-item" actions="{{actions}}">
+            <view class='game-item' slot="content">
+              <view class='info-container'>
+                <view class='date'>
+                  {{common.formatSaleDate(item.sale_date)}}
+                </view>
+                <view class='game-info'>
+                  <view class='game-name'>
+                    {{item.game_name}}
+                  </view>
+                  <view class='game-other'>
+                    <text>{{item.game_language}}</text>
+                  </view>
+                </view>
+
+                <!-- {{item.game_name}} -->
+              </view>
+              <view class='platform-container'>
+                <image wx:if="{{item.platform === 'Nintendo Switch'}}" class='platform-icon' mode="scaleToFill" src="../../images/icon/nintendo-switch.png"></image>
+
+                <image wx:if="{{item.platform === 'PlayStation4'}}" class='platform-icon' mode="scaleToFill" src="../../images/icon/playstation.png"></image>
+                <image wx:if="{{item.platform === 'Xbox One'}}" class='platform-icon' mode="scaleToFill" src="../../images/icon/xbox.png"></image>
+                <image wx:if="{{item.platform == ''}}" class='platform-icon' mode="scaleToFill" src="../../images/icon/infinity.png"></image>
+              </view>
+              <view class='like-container'>
+                <view>
+                  <i-icon class='icon-like' type="like_fill" size="20" color="#d81e06" />
+                  <text class='like-count'>10</text>
+                </view>
+              </view>
+            </view>
+          </i-swipeout>
+        </view>
+      </view>
+    </i-sticky-item>
+
+  </i-sticky>
 </view>

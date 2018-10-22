@@ -9,13 +9,16 @@ Page({
     platformIndex: 0,
     gameTypeIndex: 0,
     orderByIndex: 1,
+    loading: false,
+    spinShow: true,
     searchParams: {
       pageSize: 12,
       currentPage: 1,
       platform: '',
       gameType: '',
       orderBy: 'game_score DESC',
-      keyword: ''
+      keyword: '',
+      isSold: true
     },
     platformList: gameConfig.platformList,
     gameTypeList: gameConfig.gameTypeList,
@@ -28,12 +31,12 @@ Page({
     this.saveSystemInfo();
   },
   /**
- * 用户点击右上角分享
- */
-  onShareAppMessage: function () {
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function() {
 
   },
- 
+
   //保存访问用户的设备信息
   saveSystemInfo() {
     wx.getSystemInfo({
@@ -63,11 +66,19 @@ Page({
   //查询游戏列表
   getGameList() {
     wx.showNavigationBarLoading();
+    this.setData({
+      loading: true
+    })
     app.userService.getGameList(this.data.searchParams)
       .then(res => {
         console.log(res)
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh()
+
+        this.setData({
+          loading: false,
+          spinShow: false
+        });
 
         if (this.data.scrollAction == 'refresh') {
           this.setData({
@@ -108,10 +119,6 @@ Page({
   },
   onReachBottom() {
     if (this.data.gameList.length == this.data.gameTotal) {
-      wx.showToast({
-        title: '没有更多了',
-        icon: 'none'
-      })
       return false;
     }
     this.setData({

@@ -1,8 +1,81 @@
 /* pages/gameCalendar/gameCalendar.wxss */
-.main{
-  height: 100%;
+
+.main {
+}
+
+.game-list {
+  width: 100%;
+}
+
+.group-key {
+  font-size: 32rpx;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.i-swipeout-item {
+  padding: 8px 10px !important;
+}
+
+.game-item {
+  display: flex;
+  flex-flow: row;
+  /* height: 80rpx; */
+  /* min-height: 53rpx; */
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.date {
+  text-align: center;
+  line-height: 50rpx;
+  color: #fff;
+  width: 50rpx;
+  height: 50rpx;
+  background-color: #409eff;
+  font-size: 26rpx;
+  border-radius: 10rpx;
+  font-weight: bold;
+  box-shadow: 8rpx 8rpx 8rpx #dcdcdc;
+}
+
+.info-container {
+  display: flex;
+  flex-flow: row;
+  /* justify-content: center; */
+  align-items: center;
+  width: 70%;
+}
+
+.game-info {
+  margin-left: 40rpx;
+}
+.game-name{
+  font-size: 30rpx;
+}
+.game-other{
+  font-size: 26rpx;
+  /* font-style: italic; */
+  color: #909399;
+}
+
+.platform-container{
+  width: 15%;
   display: flex;
   flex-flow: row;
   justify-content: center;
   align-items: center;
+}
+
+.platform-icon{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.like-container {
+  width: 15%;
+}
+
+.like-count {
+  font-size: 26rpx;
 }

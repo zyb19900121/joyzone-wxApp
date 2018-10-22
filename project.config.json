@@ -33,13 +33,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
 					"name": "dev",
 					"pathName": "pages/gameDetail/gameDetail",
 					"query": "gameId=183"
+				},
+				{
+					"id": -1,
+					"name": "即将发售",
+					"pathName": "pages/gameCalendar/gameCalendar",
+					"query": ""
 				}
 			]
 		}

@@ -60,13 +60,13 @@ Component({
         .then(res => {
           console.log(res)
           // if (this.data.scrollAction == 'refresh') {
-            this.setData({
-              newsList: res.list,
-              newsTotal: res.total,
-              scrollAction: '',
-              // loadList: true
-            })
-            // wx.hideLoading();
+          this.setData({
+            newsList: res.list,
+            newsTotal: res.total,
+            scrollAction: '',
+            // loadList: true
+          })
+          // wx.hideLoading();
           // } else if (this.data.scrollAction == 'get_more') {
           //   let tempArr = [...this.data.commentList, ...res.list];
           //   this.setData({
@@ -93,5 +93,19 @@ Component({
           app.requestErrorHandle()
         })
     },
+    getNewsDetail(event) {
+      let newsId = event.currentTarget.dataset.newsid;
+      wx.navigateTo({
+        url: `../gameNewsDetail/gameNewsDetail?newsId=${newsId}`
+      })
+
+      if (event.currentTarget.dataset.viewscount >= 0) {
+        let index = event.currentTarget.dataset.index;
+        let count = event.currentTarget.dataset.viewscount + 1;
+        this.setData({
+          [`newsList[${index}].views_count`]: count
+        })
+      }
+    }
   }
 })

@@ -1,7 +1,8 @@
 {
   "navigationBarTitleText": "首页",
   "usingComponents": {
-    "component-tabs": "/components/component-tabs/component-tabs"
+    "component-tabs": "/components/component-tabs/component-tabs",
+    "i-rate": "../../dist/rate/index"
   },
   "disableScroll": true
 }

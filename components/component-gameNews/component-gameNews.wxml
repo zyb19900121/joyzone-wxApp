@@ -4,7 +4,22 @@
     <view class='no-result' wx:if="{{!newsList.length}}">暂无资讯
     </view>
     <view class='news-list-container' wx:else>
-      <view class='news-item' wx:for="{{newsList}}">
+      <view class='news-item' wx:for="{{newsList}}" wx:key="{{index}}" data-newsId="{{item.id}}" data-index="{{index}}" data-viewsCount="{{item.views_count}}" bindtap='getNewsDetail'>
+        <view class='left-part'>
+          <view class='news-title'>
+            {{item.news_title}}
+          </view>
+          <view class='news-info'>
+            <view class='news-date'>{{common.formatTime(item.create_date)}}</view>
+            <view class='news-views'>
+              <image class='views-icon' mode="aspectFit" src="../../images/icon/attention.png"></image>
+              <view class='news-views-count'>{{item.views_count}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='right-part'>
+          <image class='news-thumbnail' mode="scaleToFill" src="{{baseUrl}}{{item.news_thumbnail}}"></image>
+        </view>
       </view>
     </view>
   </scroll-view>

@@ -1,4 +1,9 @@
 {
   "navigationBarTitleText": "即将发售",
-  "disableScroll": true
+  "usingComponents": {
+    "i-sticky": "../../dist/sticky/index",
+    "i-sticky-item": "../../dist/sticky-item/index",
+    "i-swipeout": "../../dist/swipeout/index",
+    "i-icon": "../../dist/icon/index"
+  }
 }
