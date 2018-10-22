@@ -41,7 +41,6 @@ Page({
   saveSystemInfo() {
     wx.getSystemInfo({
       success: function(res) {
-        console.log(res);
         let systemInfo = {
           phone_brand: res.brand,
           phone_model: res.model,
@@ -49,7 +48,6 @@ Page({
         }
         app.userService.saveSystemInfo(systemInfo)
           .then(res => {
-            console.log(res)
             // wx.stopPullDownRefresh()
           })
           .catch(res => {
@@ -71,7 +69,6 @@ Page({
     })
     app.userService.getGameList(this.data.searchParams)
       .then(res => {
-        console.log(res)
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh()
 
@@ -109,7 +106,6 @@ Page({
   },
   // 下拉刷新
   onPullDownRefresh() {
-    console.log("下拉刷新");
     this.setData({
       'searchParams.pageSize': 18,
       'searchParams.currentPage': 1,

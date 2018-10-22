@@ -138,6 +138,7 @@ Page({
       for (let group of tempArr) {
         if (group.key == date) {
           isExist = true;
+          game.key = group.key;
           group.list.push(game)
         }
       }
@@ -147,6 +148,7 @@ Page({
           'key': date,
           'list': []
         }
+        game.key = date;
         tempGroup.list.push(game);
         tempArr.push(tempGroup);
       }
@@ -160,9 +162,35 @@ Page({
     this.setData({
       gameList: tempArr
     })
+  },
 
-    console.log(this.data.gameList);
+  updateGameDetail(newsId, firstIndex, secondIndex) {
+    app.userService.updateGameDetail(newsId, this.data.newsDetail)
+      .then(res => {
+        this.setData({
+          [`gameList[${firstIndex}].list[${secondIndex}].like_count`]: res.likeCount
+        })
+      })
+      .catch(res => {
+        app.requestErrorHandle()
+      })
+  },
+
+  handleLikeButton(event) {
+
+    event.currentTarget.dataset.likecount += 1;
+
+    let firstIndex = 0; //第一层数组的下标
+    let secondIndex = event.currentTarget.dataset.index; //第二层数组的下标
+    for (let index in this.data.gameList) {
+      if (event.currentTarget.dataset.key == this.data.gameList[index].key) {
+        firstIndex = index;
+        break;
+      }
+    }
+
+    this.updateGameDetail(event.currentTarget.dataset.gameid, firstIndex, secondIndex);
+
+
   }
-
-
 })

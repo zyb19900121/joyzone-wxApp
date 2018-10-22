@@ -58,7 +58,7 @@
 
   <view wx:if="{{gameList.length}}" class="game-list-container">
     <view class="game-list">
-      <view class="game-item" wx:for="{{gameList}}" data-gameId="{{item.id}}" data-gameName="{{item.game_name}}" bindtap='goGameDetail'>
+      <view class="game-item" wx:for="{{gameList}}" wx:key="{{index}}" data-gameId="{{item.id}}" data-gameName="{{item.game_name}}" bindtap='goGameDetail'>
         <view class='item-cover'>
           <image mode="aspectFit" src="{{baseUrl}}{{item.game_cover}}"></image>
         </view>

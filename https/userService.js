@@ -46,6 +46,14 @@ class UserService {
   }
 
   /**
+ * 更新游戏详情（游戏喜欢的数量）
+ */
+  updateGameDetail(gameId) {
+    return this._request.putRequest(`${this._baseUrl}/api/game/${gameId}`, '', this._defaultHeader)
+      .then(res => res.data)
+  }
+
+  /**
    * 获取资讯列表
    */
   getNewsList(data) {

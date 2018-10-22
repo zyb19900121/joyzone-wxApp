@@ -23,7 +23,7 @@
       </view>
       <view slot="content">
         <view wx:for="{{item.list}}" wx:key="{{index}}" class="i-sticky-demo-item">
-          <i-swipeout i-class="i-swipeout-demo-item" actions="{{actions}}">
+          <i-swipeout i-class="i-swipeout-demo-item" actions="{{actions}}" data-index="{{index}}" data-key="{{item.key}}" data-gameId="{{item.id}}" bindchange="handleLikeButton">
             <view class='game-item' slot="content">
               <view class='info-container'>
                 <view class='date'>
@@ -50,7 +50,7 @@
               <view class='like-container'>
                 <view>
                   <i-icon class='icon-like' type="like_fill" size="20" color="#d81e06" />
-                  <text class='like-count'>10</text>
+                  <text class='like-count'>{{item.like_count}}</text>
                 </view>
               </view>
             </view>
