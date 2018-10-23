@@ -1,8 +1,6 @@
 {
   "navigationBarTitleText": "游戏资讯",
-  "disableScroll": false,
-  "enablePullDownRefresh": true,
-  "backgroundTextStyle": "drak",
+  "disableScroll": true,
   "usingComponents": {
     "i-load-more": "../../dist/load-more/index",
     "i-spin": "../../dist/spin/index"

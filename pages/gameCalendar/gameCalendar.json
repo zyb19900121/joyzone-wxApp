@@ -4,6 +4,7 @@
     "i-sticky": "../../dist/sticky/index",
     "i-sticky-item": "../../dist/sticky-item/index",
     "i-swipeout": "../../dist/swipeout/index",
-    "i-icon": "../../dist/icon/index"
+    "i-icon": "../../dist/icon/index",
+    "i-spin": "../../dist/spin/index"
   }
 }

@@ -1,10 +1,5 @@
 <wxs src="../../utils/common.wxs" module="common" />
 <view class='game-news'>
-
-  <view class="container" wx:if="{{spinShow}}">
-    <i-spin fix></i-spin>
-  </view>
-
   <view class='swiper-container'>
     <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
       <block wx:for="{{newsSwiperList}}" wx:key="*this">
@@ -19,8 +14,10 @@
       </block>
     </swiper>
   </view>
-  <view class='scroll-list'>
-    <view class='news-list-container' >
+  <scroll-view class='scroll-list' scroll-with-animation="{{true}}" enable-back-to-top="{{true}}" upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="scrollToUpper" bindscrolltolower="scrollToLower"
+    bindscroll="scrollhandle" bindtouchend="handleTouchEnd">
+    <view class='no-result' wx:if="{{newsList.length==0}}">暂无数据</view>
+    <view class='news-list-container' wx:else>
       <view class='news-item' wx:for="{{newsList}}" wx:key="{{index}}" data-newsId="{{item.id}}" data-index="{{index}}" data-viewsCount="{{item.views_count}}" bindtap='getNewsDetail'>
         <view class='left-part'>
           <view class='news-title'>
@@ -39,7 +36,7 @@
         </view>
       </view>
       <i-load-more wx:if="{{newsList.length === newsTotal}}" loading="{{ false }}" />
-      <i-load-more wx:else loading="{{ false }}"/>
+      <i-load-more wx:else/>
     </view>
-  </view>
+  </scroll-view>
 </view>

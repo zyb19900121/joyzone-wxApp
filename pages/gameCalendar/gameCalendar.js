@@ -25,7 +25,7 @@ Page({
       // }
     ],
 
-
+    spinShow: true,
     searchParams: {
       pageSize: 99999,
       currentPage: 1,
@@ -95,10 +95,7 @@ Page({
   onShareAppMessage: function() {
 
   },
-
-  onChange(event) {
-    console.log(event.detail, 'click right menu callback data')
-  },
+  
   //页面滚动执行方式
   onPageScroll(event) {
     this.setData({
@@ -108,9 +105,9 @@ Page({
 
   //查询游戏列表
   getGameList() {
-    wx.showLoading({
-      title: '加载中...',
-    })
+    // wx.showLoading({
+    //   title: '加载中...',
+    // })
     app.userService.getGameList(this.data.searchParams)
       .then(res => {
         this.initGameList(res.list);
@@ -160,6 +157,7 @@ Page({
     }
 
     this.setData({
+      spinShow: false,
       gameList: tempArr
     })
   },

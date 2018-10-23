@@ -33,12 +33,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "dev",
-					"pathName": "pages/gameDetail/gameDetail",
+					"pathName": "pages/gameNews/gameNews",
 					"query": "gameId=183"
 				},
 				{

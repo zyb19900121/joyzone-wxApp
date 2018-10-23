@@ -107,7 +107,7 @@ Page({
   // 下拉刷新
   onPullDownRefresh() {
     this.setData({
-      'searchParams.pageSize': 18,
+      'searchParams.pageSize': 12,
       'searchParams.currentPage': 1,
       scrollAction: 'refresh'
     })

@@ -18,15 +18,22 @@ Page({
     previousMargin: 0,
     nextMargin: 0,
 
+    upperThreshold: 10,
+    lowerThreshold: 10,
+    scrollX: false,
+    scrollY: true,
+
     searchParams: {
       pageSize: 12,
       currentPage: 1,
       platform: "",
       isBanner: false
     },
+    isTouchEnd: true, //解决多次触发的问题
     scrollAction: '',
-    newsList: [],
+    newsList: null,
     newsTotal: '',
+    // loadList: true
 
     loading: false,
     spinShow: true
@@ -70,28 +77,15 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
+  onPullDownRefresh: function() {
 
-    this.setData({
-      'searchParams.pageSize': 12,
-      'searchParams.currentPage': 1,
-      scrollAction: 'refresh'
-    })
-    this.getNewsList(this.data.searchParams);
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
-    if (this.data.newsList.length == this.data.newsTotal) {
-      return false;
-    }
-    this.setData({
-      'searchParams.pageSize': this.data.searchParams.pageSize,
-      'searchParams.currentPage': this.data.searchParams.currentPage + 1
-    })
-    this.getNewsList(this.data.searchParams);
+  onReachBottom: function() {
+
   },
 
   /**
@@ -129,7 +123,12 @@ Page({
 
   getNewsList(searchParams) {
 
-    wx.showNavigationBarLoading();
+    if (!this.data.scrollAction === 'refresh') {
+      // wx.showLoading({
+      //   title: '加载中...',
+      // })
+    }
+
     this.setData({
       loading: true
     })
@@ -140,8 +139,10 @@ Page({
         isBanner: true
       })
       .then(res => {
+        console.log(res)
         this.setData({
-          newsSwiperList: res.list
+          newsSwiperList: res.list,
+          // newsTotal: res.total,
         })
       })
       .catch(res => {
@@ -150,29 +151,35 @@ Page({
 
     app.userService.getNewsList(searchParams)
       .then(res => {
-
-        wx.stopPullDownRefresh()
+        console.log(res)
         if (this.data.scrollAction == 'refresh') {
           this.setData({
             newsList: res.list,
             newsTotal: res.total,
             scrollAction: '',
-            loading: false,
-            spinShow: false
+            loading: false
+          })
+        } else if (this.data.scrollAction == 'get_more') {
+          let tempArr = [...this.data.newsList, ...res.list];
+          this.setData({
+            newsList: tempArr,
+            newsTotal: res.total,
+            scrollAction: '',
+            loading: false
           })
         } else {
           this.setData({
-            newsList: [...this.data.newsList, ...res.list],
+            newsList: res.list,
             newsTotal: res.total,
-            loading: false,
-            spinShow: false
+            scrollAction: '',
+            loading: false
           })
+          // wx.hideLoading();
         }
-        wx.hideNavigationBarLoading();
+        // wx.stopPullDownRefresh()
       })
       .catch(res => {
-        wx.hideNavigationBarLoading();
-        wx.stopPullDownRefresh()
+        // wx.stopPullDownRefresh()
         app.requestErrorHandle()
       })
   },
@@ -189,5 +196,63 @@ Page({
         [`newsList[${index}].views_count`]: count
       })
     }
+  },
+  scrollhandle(e) {
+    // if (e.detail.scrollTop == 0) {
+    //   this.setData({
+    //     loadList: true
+    //   })
+    // }
+    // console.log(e.detail.scrollTop)
+  },
+  scrollToUpper() {
+    if (!this.data.isTouchEnd) {
+      return;
+    }
+    // wx.showLoading({
+    //   title: '刷新中...',
+    // })
+    this.setData({
+      searchParams: {
+        pageSize: this.data.searchParams.pageSize,
+        currentPage: 1,
+        platform: "",
+        isBanner: false
+      },
+      scrollAction: 'refresh',
+      isTouchEnd: false
+    })
+    this.getNewsList(this.data.searchParams);
+  },
+  scrollToLower() {
+    if (!this.data.isTouchEnd) {
+      return;
+    }
+    if (this.data.newsList.length == this.data.newsTotal) {
+      // wx.showToast({
+      //   title: '没有更多了',
+      //   icon: 'none'
+      // })
+      return false;
+    }
+    // wx.showLoading({
+    //   title: '加载中...',
+    // })
+    this.setData({
+      searchParams: {
+        pageSize: this.data.searchParams.pageSize,
+        currentPage: this.data.searchParams.currentPage + 1,
+        platform: "",
+        isBanner: false
+      },
+      scrollAction: 'get_more',
+      isTouchEnd: false
+    })
+    this.getNewsList(this.data.searchParams);
+  },
+  handleTouchEnd() {
+    this.setData({
+      isTouchEnd: true
+    })
   }
 })
