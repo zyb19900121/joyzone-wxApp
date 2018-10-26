@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "资讯详情"
+  "navigationBarTitleText": "资讯详情",
+  "usingComponents": {
+    "i-spin": "../../dist/spin/index"
+  }
 }

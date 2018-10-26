@@ -5,16 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    appInfo: {}
+    appInfo: {},
+    spinShow: true
   },
 
   getAppInfo() {
     app.userService.getAppInfo()
       .then(res => {
-        console.log(res)
         // wx.stopPullDownRefresh()
         this.setData({
-          appInfo: res
+          appInfo: res,
+          spinShow: false
         })
       })
       .catch(res => {

@@ -113,7 +113,6 @@ Component({
       commentParams.gameId = this.data.gameId
       app.userService.getCommentList(commentParams)
         .then(res => {
-          console.log(res)
           if (this.data.scrollAction == 'refresh') {
             this.setData({
               commentList: res.list,

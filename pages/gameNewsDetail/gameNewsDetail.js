@@ -11,25 +11,17 @@ Page({
   data: {
     newsId: '',
     newsContent: '',
-    newsDetail: {}
+    newsDetail: {},
+
+    spinShow: true
   },
 
   //根据ID获取游戏详细信息
   getNewsDetail(newsId) {
-    console.log('newsis!!',newsId)
-    wx.showLoading({
-      title: '加载中...',
-    })
+
     app.userService.getNewsDetail(newsId)
       .then(res => {
-
-        // this.setData({
-        //   newsDetail: res
-        // })
-        console.log('newsDetail', res)
         WxParse.wxParse('newsContent', 'html', `<div class="ql-editor">${res.news_content}</div>`, this, 20);
-        wx.hideLoading();
-
         this.data.newsDetail.newsTitle = res.news_title;
         this.data.newsDetail.newsContent = res.news_content;
         this.data.newsDetail.newsThumbnail = res.news_thumbnail;
@@ -37,8 +29,10 @@ Page({
         this.data.newsDetail.gameId = res.game_id;
         this.data.newsDetail.isBanner = res.is_banner;
         this.data.newsDetail.viewsCount = res.views_count + 1;
-        console.log('newsDetail', this.data.newsDetail)
         this.updateNewsDetail(this.data.newsId);
+        this.setData({
+          spinShow: false
+        })
       })
       .catch(res => {
         app.requestErrorHandle()
@@ -46,11 +40,8 @@ Page({
   },
 
   updateNewsDetail(newsId) {
-    console.log(this.data.newsDetail.views_count)
     app.userService.updateNewsDetail(newsId, this.data.newsDetail)
-      .then(res => {
-        console.log('update', res)
-      })
+      .then(res => {})
       .catch(res => {
         app.requestErrorHandle()
       })
@@ -60,11 +51,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log('options',options)
     this.setData({
       newsId: options.newsId
     })
-
     this.getNewsDetail(this.data.newsId)
   },
 

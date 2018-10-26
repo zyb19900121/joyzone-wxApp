@@ -56,7 +56,6 @@ Page({
           })
       },
       fail: function(err) {
-        console.log(err);
       }
     })
 
@@ -72,21 +71,18 @@ Page({
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh()
 
-        this.setData({
-          loading: false,
-          spinShow: false
-        });
-
         if (this.data.scrollAction == 'refresh') {
           this.setData({
             gameList: res.list,
             gameTotal: res.total,
-            scrollAction: ''
+            scrollAction: '',
+            spinShow: false
           })
         } else {
           this.setData({
             gameList: [...this.data.gameList, ...res.list],
-            gameTotal: res.total
+            gameTotal: res.total,
+            spinShow: false
           })
         }
       })
@@ -131,7 +127,7 @@ Page({
   hideInput() {
     this.setData({
       'searchParams.keyword': '',
-      'searchParams.pageSize': 18,
+      'searchParams.pageSize': 12,
       'searchParams.currentPage': 1,
       scrollAction: 'refresh',
       inputShowed: false
@@ -141,7 +137,7 @@ Page({
   clearInput() {
     this.setData({
       'searchParams.keyword': '',
-      'searchParams.pageSize': 18,
+      'searchParams.pageSize': 12,
       'searchParams.currentPage': 1,
       scrollAction: 'refresh'
     });
@@ -150,7 +146,7 @@ Page({
   keywordInputTyping(e) {
     this.setData({
       'searchParams.keyword': e.detail.value,
-      'searchParams.pageSize': 18,
+      'searchParams.pageSize': 12,
       'searchParams.currentPage': 1,
       scrollAction: 'refresh'
     });

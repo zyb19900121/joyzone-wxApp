@@ -8,22 +8,15 @@ Page({
    */
   data: {
     scrollTop: 0,
+    inputShowed: false,
     actions: [{
-        name: '喜欢',
-        color: '#fff',
-        fontsize: '20',
-        width: 100,
-        icon: 'like',
-        background: '#ed3f14'
-      },
-      // {
-      //   name: '返回',
-      //   width: 100,
-      //   color: '#80848f',
-      //   fontsize: '20',
-      //   icon: 'undo'
-      // }
-    ],
+      name: '喜欢',
+      color: '#fff',
+      fontsize: '20',
+      width: 100,
+      icon: 'like',
+      background: '#ed3f14'
+    }],
 
     spinShow: true,
     searchParams: {
@@ -95,7 +88,7 @@ Page({
   onShareAppMessage: function() {
 
   },
-  
+
   //页面滚动执行方式
   onPageScroll(event) {
     this.setData({
@@ -111,9 +104,9 @@ Page({
     app.userService.getGameList(this.data.searchParams)
       .then(res => {
         this.initGameList(res.list);
-        wx.hideLoading();
       })
-      .catch(res => {
+      .catch(err => {
+        console.log(err)
         app.requestErrorHandle()
       })
   },
@@ -151,7 +144,7 @@ Page({
       }
     }
 
-    if (tempArr[0].key == 'TBA') {
+    if (tempArr.length > 0 && tempArr[0].key == 'TBA') {
       tempArr.push(tempArr[0]);
       tempArr.splice(0, 1);
     }
@@ -188,7 +181,39 @@ Page({
     }
 
     this.updateGameDetail(event.currentTarget.dataset.gameid, firstIndex, secondIndex);
+  },
 
-
-  }
+  showInput() {
+    this.setData({
+      inputShowed: true
+    });
+  },
+  hideInput() {
+    this.setData({
+      'searchParams.keyword': '',
+      'searchParams.pageSize': 18,
+      'searchParams.currentPage': 1,
+      scrollAction: 'refresh',
+      inputShowed: false
+    });
+    this.getGameList(this.data.searchParams);
+  },
+  clearInput() {
+    this.setData({
+      'searchParams.keyword': '',
+      'searchParams.pageSize': 12,
+      'searchParams.currentPage': 1,
+      scrollAction: 'refresh'
+    });
+    this.getGameList(this.data.searchParams);
+  },
+  keywordInputTyping(e) {
+    this.setData({
+      'searchParams.keyword': e.detail.value,
+      'searchParams.pageSize': 12,
+      'searchParams.currentPage': 1,
+      scrollAction: 'refresh'
+    });
+    this.getGameList(this.data.searchParams);
+  },
 })

@@ -1,6 +1,9 @@
 <i-notice-bar icon="systemprompt" closable loop>
   此小程序是个人学习练手的项目，所以数据更新较慢，望大家谅解。。。
 </i-notice-bar>
+<view class="container" wx:if="{{spinShow}}">
+  <i-spin fix></i-spin>
+</view>
 <view class='app-info'>
   <view class='info-item'>
     <text class='item-name'>作者：</text>

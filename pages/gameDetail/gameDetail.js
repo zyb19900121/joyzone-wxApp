@@ -14,7 +14,6 @@ Page({
   getGameDetail(gameId) {
     app.userService.getGameDetail(gameId)
       .then(res => {
-        console.log(res)
         // wx.stopPullDownRefresh()
         this.setData({
           gameDetail: res,
@@ -35,7 +34,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log('options', options)
     this.setData({
       gameId: options.gameId
     })

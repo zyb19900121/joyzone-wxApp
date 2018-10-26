@@ -2,6 +2,7 @@
   "navigationBarTitleText": "关于我们",
   "disableScroll": true,
   "usingComponents": {
-    "i-notice-bar": "../../dist/notice-bar/index"
+    "i-notice-bar": "../../dist/notice-bar/index",
+    "i-spin": "../../dist/spin/index"
   }
 }

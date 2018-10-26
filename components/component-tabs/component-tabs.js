@@ -43,13 +43,11 @@ Component({
    */
   methods: {
     clickTab(event) {
-      console.log(event);
       this.setData({
         currentTab: event.target.dataset.current
       })
     },
     swiperTab(event) {
-      console.log(event.detail)
       this.setData({
         currentTab: event.detail.current
       })
@@ -61,9 +59,7 @@ Component({
           userInfo: e.detail.userInfo,
           hasUserInfo: true
         })
-        console.log('用户信息', app.globalData.userInfo)
       } else {
-        console.log('拒绝授权')
       }
       this.setData({
         showModal: true
@@ -115,7 +111,6 @@ Component({
     saveComment(data) {
       app.userService.saveComment(data)
         .then(res => {
-          console.log(res)
           wx.showToast({
             title: '发布成功',
             icon: 'success',
@@ -124,7 +119,7 @@ Component({
 
           let commentParams = {
             gameId: this.data.gameId,
-            pageSize: 10,
+            pageSize: 12,
             currentPage: 1
           }
 

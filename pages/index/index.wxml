@@ -67,7 +67,7 @@
     </view>
 
     <i-load-more wx:if="{{gameList.length === gameTotal}}" loading="{{ false }}" />
-    <i-load-more wx:else loading="{{ false }}"/>
+    <i-load-more wx:if="{{gameList.length > 0 && gameList.length != gameTotal}}" />
   </view>
 
   <!-- <i-load-more wx:if="{{!gameList.length && !spinShow}}" class='no-result' tip="暂无数据" loading="{{ false }}" /> -->

@@ -1,6 +1,10 @@
 <!--pages/gameNewsDetail/gameNewsDetail.wxml-->
-<import src="../..//wxParse/wxParse.wxml"/>
+<import src="../..//wxParse/wxParse.wxml" />
+
+<view class="container" wx:if="{{spinShow}}">
+  <i-spin fix></i-spin>
+</view>
 
 <view class='rich-text'>
-  <template is="wxParse" data="{{wxParseData:newsContent.nodes}}"/>
+  <template is="wxParse" data="{{wxParseData:newsContent.nodes}}" />
 </view>

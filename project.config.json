@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -45,6 +45,12 @@
 					"id": -1,
 					"name": "即将发售",
 					"pathName": "pages/gameCalendar/gameCalendar",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "游戏资讯",
+					"pathName": "pages/gameNews/gameNews",
 					"query": ""
 				}
 			]

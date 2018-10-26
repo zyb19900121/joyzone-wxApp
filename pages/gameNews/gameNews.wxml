@@ -20,7 +20,7 @@
     </swiper>
   </view>
   <view class='scroll-list'>
-    <view class='news-list-container' >
+    <view class='news-list-container'>
       <view class='news-item' wx:for="{{newsList}}" wx:key="{{index}}" data-newsId="{{item.id}}" data-index="{{index}}" data-viewsCount="{{item.views_count}}" bindtap='getNewsDetail'>
         <view class='left-part'>
           <view class='news-title'>
@@ -39,7 +39,7 @@
         </view>
       </view>
       <i-load-more wx:if="{{newsList.length === newsTotal}}" loading="{{ false }}" />
-      <i-load-more wx:else loading="{{ false }}"/>
+      <i-load-more wx:if="{{newsList.length > 0 && newsList.length != newsTotal}}" />
     </view>
   </view>
 </view>
