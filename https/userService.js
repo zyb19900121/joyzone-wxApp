@@ -46,8 +46,8 @@ class UserService {
   }
 
   /**
- * 更新游戏详情（游戏喜欢的数量）
- */
+   * 更新游戏详情（游戏喜欢的数量）
+   */
   updateGameDetail(gameId) {
     return this._request.putRequest(`${this._baseUrl}/api/game/${gameId}`, '', this._defaultHeader)
       .then(res => res.data)
@@ -62,8 +62,8 @@ class UserService {
   }
 
   /**
-  * 获取资讯详情
-  */
+   * 获取资讯详情
+   */
   getNewsDetail(newsId) {
     let data = ''
     return this._request.getRequest(`${this._baseUrl}/api/gameNews/${newsId}`, data, this._defaultHeader)
@@ -71,9 +71,9 @@ class UserService {
   }
 
   /**
-  * 更新资讯详情（自增阅读量）
-  */
-  updateNewsDetail(newsId,newsDetail) {
+   * 更新资讯详情（自增阅读量）
+   */
+  updateNewsDetail(newsId, newsDetail) {
     return this._request.putRequest(`${this._baseUrl}/api/gameNews/${newsId}`, newsDetail, this._defaultHeader)
       .then(res => res.data)
   }
@@ -92,6 +92,15 @@ class UserService {
    */
   getCommentList(data) {
     return this._request.getRequest(this._baseUrl + '/api/gameComment', data, this._defaultHeader)
+      .then(res => res.data)
+  }
+
+
+  /**
+   * 获取图集列表
+   */
+  getGalleryList(data) {
+    return this._request.getRequest(this._baseUrl + '/api/gameGallery', data, this._defaultHeader)
       .then(res => res.data)
   }
 

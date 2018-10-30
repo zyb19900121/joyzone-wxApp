@@ -30,4 +30,5 @@ flex-shrink
 flex-basis
 该属性来设置该元素的宽度。当然，width也可以用来设置元素宽度。如果元素上同时设置了width和flex-basis,那么flex-basis会覆盖width的值。
 
+align-items和align-content有相同的功能，不过不同点是它是用来让每一个单行的容器居中而不是让整个容器居中。
 **/

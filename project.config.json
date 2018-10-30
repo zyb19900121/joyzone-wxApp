@@ -33,12 +33,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
-					"name": "dev",
-					"pathName": "pages/gameNews/gameNews",
+					"name": "游戏详情",
+					"pathName": "pages/gameDetail/gameDetail",
 					"query": "gameId=183"
 				},
 				{

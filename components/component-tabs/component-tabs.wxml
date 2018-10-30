@@ -16,8 +16,8 @@
     <swiper-item class="swiper-item">
       <view>攻略 (Coming soon)</view>
     </swiper-item>
-    <swiper-item class="swiper-item">
-      <view>图集 (Coming soon)</view>
+    <swiper-item class="swiper-item swiper-gameGallery">
+      <component-gameGallery id="componentGameGallery" class="component-gameGallery" gameId="{{gameId}}"></component-gameGallery>
     </swiper-item>
     <swiper-item class="swiper-item swiper-comment">
       <!-- <view class='comment-list'>评论 (Coming soon)</view> -->

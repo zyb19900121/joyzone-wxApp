@@ -1,0 +1,27 @@
+<view class='gallery-list'>
+  <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="scrollToUpper" bindscrolltolower="scrollToLower" bindscroll="scrollhandle" bindtouchend="handleTouchEnd">
+    <view class='gallery-list-wrap'>
+      <view class='gallery-item-wrap'>
+        <view class='gallery-item'>1</view>
+      </view>
+      <view class='gallery-item-wrap'>
+        <view class='gallery-item'>2</view>
+      </view>
+      <view class='gallery-item-wrap'>
+        <view class='gallery-item'>3</view>
+      </view>
+      <view class='gallery-item-wrap'>
+        <view class='gallery-item'>4</view>
+      </view>
+      <view class='gallery-item-wrap'>
+        <view class='gallery-item'>5</view>
+      </view>
+      <view class='gallery-item-wrap'>
+        <view class='gallery-item'>6</view>
+      </view>
+    </view>
+  </scroll-view>
+
+
+
+</view>
