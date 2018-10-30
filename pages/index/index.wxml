@@ -60,7 +60,7 @@
     <view class="game-list">
       <view class="game-item" wx:for="{{gameList}}" wx:key="{{index}}" data-gameId="{{item.id}}" data-gameName="{{item.game_name}}" bindtap='goGameDetail'>
         <view class='item-cover'>
-          <image mode="aspectFit" src="{{baseUrl}}{{item.game_cover}}"></image>
+          <image mode="aspectFit" src="{{baseUrl}}{{item.game_cover}}" lazy-load='true'></image>
         </view>
         <view class='item-title'>{{item.game_name}}</view>
       </view>

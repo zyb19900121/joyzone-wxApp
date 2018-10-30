@@ -41,7 +41,8 @@ Component({
     galleryList: [],
     galleryTotal: '',
     scrollAction: '',
-    isTouchEnd: true, //解决多次触发的问题
+    isTouchEnd: true, //解决多次触发的问题,
+    imgList: [] //用于preview
   },
 
   ready() {
@@ -78,16 +79,32 @@ Component({
               scrollAction: '',
             })
           }
-
-
+          this.initImgUrl();
         })
         .catch(res => {
           app.requestErrorHandle()
         })
     },
+    scrollhandle() {},
+    scrollToUpper() {},
+    scrollToLower() {},
     handleTouchEnd() {
       this.setData({
         isTouchEnd: true
+      })
+    },
+    initImgUrl() {
+      this.data.imgList = [];
+      for (let item of this.data.galleryList) {
+        let realSrc = `${this.data.baseUrl}${item.image_src }`;
+        this.data.imgList.push(realSrc)
+      }
+    },
+    handlePreviewImage(event) {
+      let index = event.currentTarget.dataset.index;
+      wx.previewImage({
+        current: this.data.imgList[index], // 当前显示图片的http链接
+        urls: this.data.imgList // 需要预览的图片http链接列表
       })
     }
   }

@@ -14,7 +14,7 @@
           <text class='game-name-en'>{{gameDetail.game_name_en}}</text>
         </view>
         <view class='info-item'>
-          <text class='game-type' wx:for="{{gameTypeList}}">{{item}}</text>
+          <text class='game-type' wx:for="{{gameTypeList}}" wx:key="{{index}}">{{item}}</text>
         </view>
         <view class='info-item score'>
           <!-- <text>评分：</text> -->

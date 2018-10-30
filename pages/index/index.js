@@ -12,7 +12,7 @@ Page({
     loading: false,
     spinShow: true,
     searchParams: {
-      pageSize: 12,
+      pageSize: 100,
       currentPage: 1,
       platform: '',
       gameType: '',
@@ -253,5 +253,5 @@ Page({
       scrollAction: 'refresh'
     })
     this.getGameList(this.data.searchParams);
-  },
+  }
 })
