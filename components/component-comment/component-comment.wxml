@@ -1,6 +1,6 @@
 <wxs src="../../utils/common.wxs" module="common" />
 <view class="component-list">
-  <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="scrollToUpper" bindscrolltolower="scrollToLower" bindscroll="scrollhandle" bindtouchend="handleTouchEnd">
+  <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="scrollToUpper" bindscrolltolower="scrollToLower" bindscroll="scrollhandle" bindtouchend="handleTouchEnd" bindtouchstart="handleTouchStart">
     <view class='no-result' wx:if="{{!commentList.length}}">暂无评论</view>
     <view class='comment-list-container' wx:else>
       <view class='comment-item' wx:for="{{commentList}}" wx:key="{{index}}">

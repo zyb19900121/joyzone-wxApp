@@ -12,11 +12,11 @@ Component({
     },
     upperThreshold: {
       type: Number,
-      value: 0
+      value: 50
     },
     lowerThreshold: {
       type: Number,
-      value: 0
+      value: 50
     },
     scrollX: {
       type: Boolean,
@@ -85,9 +85,9 @@ Component({
       this.getCommentList(this.data.commentParams);
     },
     scrollToLower() {
-      if (!this.data.isTouchEnd) {
-        return;
-      }
+      // if (!this.data.isTouchEnd) {
+      //   return;
+      // }
       if (this.data.commentList.length == this.data.commentTotal) {
         wx.showToast({
           title: '没有更多了',
@@ -147,9 +147,14 @@ Component({
           app.requestErrorHandle()
         })
     },
+    handleTouchStart() {
+      this.setData({
+        isTouchEnd: true
+      })
+    },
     handleTouchEnd() {
       this.setData({
-        isTouchEnd:true
+        isTouchEnd: true
       })
     }
   }

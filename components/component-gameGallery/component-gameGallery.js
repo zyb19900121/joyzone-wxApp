@@ -11,11 +11,11 @@ Component({
     },
     upperThreshold: {
       type: Number,
-      value: 0
+      value: 50
     },
     lowerThreshold: {
       type: Number,
-      value: 0
+      value: 50
     },
     scrollX: {
       type: Boolean,
@@ -71,6 +71,7 @@ Component({
               galleryTotal: res.total,
               scrollAction: '',
             })
+            console.log(this.data.galleryList)
             wx.hideLoading();
           } else {
             this.setData({
@@ -86,8 +87,53 @@ Component({
         })
     },
     scrollhandle() {},
-    scrollToUpper() {},
-    scrollToLower() {},
+    scrollToUpper() {
+      if (!this.data.isTouchEnd) {
+        return;
+      }
+      wx.showLoading({
+        title: '刷新中...',
+      })
+      this.setData({
+        searchParams: {
+          pageSize: this.data.searchParams.pageSize,
+          currentPage: 1
+        },
+        scrollAction: 'refresh',
+        isTouchEnd: false
+      })
+      this.getGalleryList(this.data.searchParams);
+    },
+    scrollToLower() {
+      // if (!this.data.isTouchEnd) {
+      //   return;
+      // }
+      if (this.data.galleryList.length == this.data.galleryTotal) {
+        wx.showToast({
+          title: '没有更多了',
+          icon: 'none'
+        })
+        return false;
+      }
+      wx.showLoading({
+        title: '加载中...',
+      })
+      this.setData({
+        searchParams: {
+          pageSize: this.data.searchParams.pageSize,
+          currentPage: this.data.searchParams.currentPage + 1
+        },
+        scrollAction: 'get_more',
+        isTouchEnd: false
+        // loadList: false
+      })
+      this.getGalleryList(this.data.searchParams);
+    },
+    handleTouchStart() {
+      this.setData({
+        isTouchEnd: true
+      })
+    },
     handleTouchEnd() {
       this.setData({
         isTouchEnd: true

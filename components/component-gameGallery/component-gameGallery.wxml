@@ -1,5 +1,5 @@
 <view class='gallery-list'>
-  <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="scrollToUpper" bindscrolltolower="scrollToLower" bindscroll="scrollhandle" bindtouchend="handleTouchEnd">
+  <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="scrollToUpper" bindscrolltolower="scrollToLower" bindscroll="scrollhandle" bindtouchend="handleTouchEnd" bindtouchstart="handleTouchStart">
     <view class='gallery-list-wrap'>
       <view wx:for="{{galleryList}}" wx:key="{{index}}" class='gallery-item-wrap' data-index="{{index}}" data-src="{{item.image_src}}" bindtap='handlePreviewImage'>
         <image class='gallery-item' lazy-load="true" mode="aspectFill" src="{{baseUrl}}{{item.image_src}}"></image>

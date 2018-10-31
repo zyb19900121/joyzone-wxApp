@@ -1,6 +1,6 @@
 <wxs src="../../utils/common.wxs" module="common" />
 <view class="news-list">
-  <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="scrollToUpper" bindscrolltolower="scrollToLower" bindscroll="scrollhandle" bindtouchend="handleTouchEnd">
+  <scroll-view class='scroll-list' upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-x="{{scrollX}}" scroll-y="{{scrollY}}" bindscrolltoupper="scrollToUpper" bindscrolltolower="scrollToLower" bindscroll="scrollhandle" bindtouchend="handleTouchEnd" bindtouchstart="handleTouchStart">
     <view class='no-result' wx:if="{{!newsList.length}}">暂无资讯
     </view>
     <view class='news-list-container' wx:else>
