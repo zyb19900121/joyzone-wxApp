@@ -101,6 +101,7 @@ Component({
       }
     },
     handlePreviewImage(event) {
+      app.globalData.previewOnshow = true;
       let index = event.currentTarget.dataset.index;
       wx.previewImage({
         current: this.data.imgList[index], // 当前显示图片的http链接

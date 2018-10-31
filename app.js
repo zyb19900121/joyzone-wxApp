@@ -40,7 +40,8 @@ App({
   globalData: {
     userInfo: null,
     baseUrl,
-    gameId:''
+    gameId:'',
+    previewOnshow:''
   },
   requestErrorHandle() {
     wx.showToast({

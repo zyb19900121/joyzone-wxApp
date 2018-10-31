@@ -5,6 +5,7 @@ Page({
     baseUrl: app.globalData.baseUrl,
     gameList: [],
     gameTotal: '',
+
     inputShowed: false,
     platformIndex: 0,
     gameTypeIndex: 0,
@@ -12,7 +13,7 @@ Page({
     loading: false,
     spinShow: true,
     searchParams: {
-      pageSize: 100,
+      pageSize: 12,
       currentPage: 1,
       platform: '',
       gameType: '',
@@ -21,12 +22,13 @@ Page({
       isSold: true
     },
     platformList: gameConfig.platformList,
-    gameTypeList: gameConfig.gameTypeList,
+    gameTypeList: [],
     gameOrderByList: gameConfig.gameOrderByList,
     scrollAction: ''
   },
   onLoad: function() {
     // wx.startPullDownRefresh()
+    this.getGameTypeList();
     this.getGameList();
     this.saveSystemInfo();
   },
@@ -55,10 +57,29 @@ Page({
             app.requestErrorHandle()
           })
       },
-      fail: function(err) {
-      }
+      fail: function(err) {}
     })
 
+  },
+
+  //获取游戏类型列表
+  getGameTypeList() {
+    app.userService.getGameTypeList({
+        pageSize: 9999,
+        currentPage: 1
+      })
+      .then(res => {
+        let tempArr = ["全部类型"];
+        for (let item of res.list) {
+          tempArr.push(item.type_name_cn)
+        }
+        this.setData({
+          gameTypeList: tempArr,
+        })
+      })
+      .catch(res => {
+        app.requestErrorHandle()
+      })
   },
   //查询游戏列表
   getGameList() {
@@ -179,44 +200,9 @@ Page({
     this.getGameList(this.data.searchParams);
   },
   bindGameTypeChange(e) {
-    let gameType = ''
-    switch (e.detail.value) {
-      case '0':
-        gameType = ""
-        break;
-      case '1':
-        gameType = "动作"
-        break;
-      case '2':
-        gameType = "冒险"
-        break;
-      case '3':
-        gameType = "射击"
-        break;
-      case '4':
-        gameType = "格斗"
-        break;
-      case '5':
-        gameType = "音乐"
-        break;
-      case '6':
-        gameType = "益智"
-        break;
-      case '7':
-        gameType = "竞速"
-        break;
-      case '8':
-        gameType = "角色扮演"
-        break;
-      case '9':
-        gameType = "即时战略"
-        break;
-      case '10':
-        gameType = "模拟"
-        break;
-      default:
-        break;
-    }
+
+    let gameType = '';
+    e.detail.value == 0 ? gameType = '' : gameType = this.data.gameTypeList[e.detail.value];
     this.setData({
       'searchParams.gameType': gameType,
       gameTypeIndex: e.detail.value,
@@ -253,5 +239,5 @@ Page({
       scrollAction: 'refresh'
     })
     this.getGameList(this.data.searchParams);
-  }
+  },
 })

@@ -29,6 +29,14 @@ class UserService {
   }
 
   /**
+   * 获取游戏类型列表
+   */
+  getGameTypeList(data) {
+    return this._request.getRequest(this._baseUrl + '/api/gameType', data, this._defaultHeader)
+      .then(res => res.data)
+  }
+
+  /**
    * 获取所有游戏列表
    */
   getGameList(data) {
